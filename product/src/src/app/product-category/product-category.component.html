@@ -3,7 +3,7 @@
       <div *ngFor="let category of productsCategory" class="col-md-4 newspaper">
           <div>{{category.categoryName}}</div>
             <div  class="box" *ngFor="let prod of category.products" >
-            <img class="productimg" src="../assets/products/{{prod.imageFile}}.jpg"/>
+            <img class="productimg" src="../assets/products/{{prod.imageFile}}.png"/>
             <p class="productname">{{prod.name}}</p>
             <p class="productcategory">{{prod.description}}</p> 
             <p class="productcategory">{{prod.categoryName}}</p> 
@@ -19,7 +19,7 @@
         </tr >
         <tr >
             <td *ngFor="let prod of this.category.products" class="col-md-4">
-            <img class="productimg" src="../assets/products/{{prod.imageFile}}.jpg"/>
+            <img class="productimg" src="../assets/products/{{prod.imageFile}}.png"/>
             <p class="productname">{{prod.name}}</p>
             <p class="productcategory">{{prod.description}}</p> 
             <p class="productcategory">{{prod.categoryName}}</p> 
