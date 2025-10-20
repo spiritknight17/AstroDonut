@@ -24,6 +24,7 @@ public class    ProductData {
     String price;
     @Column(name = "image_file")
     String imageFile;
+    int ratings;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)

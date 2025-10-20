@@ -11,4 +11,5 @@ public class Product {
     String imageFile;
     String unitOfMeasure;
     String price;
+    int ratings;
 }
