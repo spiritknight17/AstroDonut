@@ -3,9 +3,9 @@
     width: 100%;
     background-color: black;
     position: relative;
-    top: -100px;
     margin-bottom: -100px;
     height: auto;
+    padding-top: 100px;
 }
 .Home {
     display: flex;
