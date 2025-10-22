@@ -1,0 +1,143 @@
+.footer {
+    position: relative;
+    background-color: #61a6ab;
+    width: 100%;
+}
+.UpperFooter{
+    display: flex;
+    justify-content: space-between;
+}
+.FooterLogo{
+    height: 150px;
+    width: 150px;
+    position: relative;
+    left: 225px;
+}
+.SocialMediaIcons img:hover{
+    filter: brightness(0) saturate(100%) invert(57%) sepia(40%) saturate(3302%) hue-rotate(344deg) brightness(99%) contrast(104%);
+    cursor: pointer;
+}
+.SocialMediaIcons{
+    position: relative;
+    width: 500px;
+    height: 50px;
+    left: 197px;
+    align-items: center;
+    display: flex;
+    color: #f6f6e9;
+}
+.AboutUsFooter {
+    font-size: 16px;
+    color: #f6f6e9;
+    position: relative;
+    text-align: justify;
+    width: 350px;
+    line-height: 25px;
+    left: -100px;
+    letter-spacing: 2px;
+    margin-top: 35px;
+}
+.AboutUsFooter h3 {
+    font-family: 'Borsok';
+    font-size: 24px;
+    color: #f6f6e9;
+    position: relative;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+.AboutUsFooter p {
+    font-size: 12px;
+    color: #f6f6e9;
+}
+.QuickLinks {
+    position: relative;
+    left: -100px;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 2px;
+    margin-top: 35px;
+}
+.QuickLinks h3 {
+    font-family: 'Borsok';
+    font-size: 24px;
+    color: #f6f6e9;
+    position: relative;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+.QuickLinks a {
+  text-decoration: none;
+  color: #f6f6e9;
+  font-family: 'Borsok';
+  line-height: 50px;
+  gap: 32px;
+  font-size: 16px;
+}
+.contactUs{
+    position: relative;
+    height: 250px;
+    width: 200px;
+    left: -100px;
+    display: flex;
+    align-items: center;
+}
+.contactUs button{
+    border: solid 2px #f6f6e9;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Borsok';
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 100px;
+    background: transparent;
+    width: 200px;
+    height: 40px;
+    color: #f6f6e9;
+    letter-spacing: 2px;
+}
+.contactUs button:hover{
+    background-color: #f6f6e9;
+    color: #61a6ab;
+    transition: 0.3s;   
+}
+.QuickLinks a:hover {
+  color: #ff751f;
+  transition: 0.3s;
+}
+hr {
+    border: 0.5px solid #f6f6e9;
+    width: 95%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+}
+.LowerFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+}
+.AllRightReserved {
+    color: #f6f6e9;
+    font-family: monospace;
+    letter-spacing: 2px;
+}
+.PrivacyPolicyandTermsofService a{
+    color: #f6f6e9;
+    letter-spacing: 2px;
+    display: flex;
+    text-decoration: none;
+}
+.PrivacyPolicyandTermsofService {
+    padding-right: 25px;
+    font-family: 'Borsok';
+    color: #f6f6e9;
+    letter-spacing: 2px;
+    display: flex;
+    text-decoration: none;
+}
+.PrivacyPolicyandTermsofService p{
+    margin-left: 20px;
+    margin-right: 20px;
+}

@@ -1,0 +1,346 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+.HomePage {
+    width: 100%;
+    background-color: black;
+    position: relative;
+    top: -100px;
+    margin-bottom: -100px;
+    height: auto;
+}
+.Home {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    height: 700px;
+}
+.HomeSection1 {
+    position: relative;
+    top: 0px;
+    width: 50%;
+    Height: 100%;
+    background-color: #f7b9a1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+.HomeSection2{
+    width: 50%;
+    Height: 100%;
+    overflow-x: hidden;
+    display: flex;
+    position: relative;
+
+}
+.HomeSection1 h1 {
+    font-family: 'Borsok';
+    font-size: 60px;
+    color: #f6f6e9;
+    position: relative;
+    top: 200px;
+    height: auto;
+    text-align: center;
+    letter-spacing: 2px;
+}
+.HomeSection1 p {
+    font-family: monospace;
+    font-size: 16px;
+    color: #f6f6e9;
+    position: relative;
+    left: 75px;
+    height: 40px;
+    top: 220px;
+    text-align: center;
+    width: 600px;
+}
+.HomeSection1Buttons {
+    display: flex;       
+    justify-content: center;
+    align-items: center;   
+    position: relative;
+    gap: 20px;
+    top: 215px;
+}
+.HomeSection1Buttons button{
+    border: solid 2px #f6f6e9;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Borsok';
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 100px;
+    background: transparent;
+    width: 200px;
+    height: 50px;
+    color: #f6f6e9;
+    letter-spacing: 2px;
+    position: relative;
+}
+.HomeSection1Buttons button:hover{
+    background-color: #f6f6e9;
+    color: #f7b9a1;
+    transition: 0.3s;   
+}
+.Deals{
+    position: relative;
+    top: 0px; 
+    width: 100%;
+    Height: 750px;
+    background-color: #f6f6e9;
+    overflow-x: hidden;
+    display: block;
+}
+.DealsDescription {
+    text-align: center;
+    align-items: center;
+    height: 250px;
+}
+.DealsDescription h1 {
+    font-family: 'Borsok';
+    font-size: 60px;
+    color: #f7b9a1;
+    position: relative;
+    height: auto;
+    text-align: center;
+    top: 80px;
+    letter-spacing: 2px;
+}
+.DealsDescription p {
+    font-family: monospace;
+    font-size: 16px;
+    color: black;
+    position: relative;
+    text-align: center;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 100px;
+}
+.carousel-container {
+    position: relative;
+    width: 100%;
+    padding: 40px 20px;
+}
+
+.splide__track {
+    width: 100%;
+    overflow: hidden;
+    height: 400px;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #f6f6e9;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.carousel-nav:hover {
+    background: #61a6ab;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav ion-icon {
+    font-size: 24px;
+    color: black;
+}
+
+.carousel-prev {
+    left: 20px;
+}
+
+.carousel-next {
+    right: 20px;
+}
+.splide__list {
+    display: flex;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    transition: transform 0.3s ease;
+}
+
+.splide__slide {
+    flex: 0 0 280px;
+    display: flex;
+    justify-content: center;
+}
+
+.product-card {
+    background: #f7b9a1;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 280px;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-name {
+    font-family: 'Borsok';
+    font-size: 18px;
+    font-weight: 600;
+    color: #f6f6e9;
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+    letter-spacing: 2px;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.star {
+    font-size: 16px;
+    color: #61a6ab;
+    transition: color 0.2s ease;
+}
+
+.star:hover {
+    color: #61a6ab;
+}
+
+.rating-text {
+    font-family: monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+    margin-left: 8px;
+}
+
+.product-price {
+    font-family: 'Borsok';
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    letter-spacing: 2px;
+}
+@media (max-width: 768px) {
+    .carousel-container {
+        padding: 30px 15px;
+    }
+    
+    .carousel-nav {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .carousel-nav ion-icon {
+        font-size: 20px;
+    }
+    
+    .carousel-prev {
+        left: 15px;
+    }
+    
+    .carousel-next {
+        right: 15px;
+    }
+    
+    .splide__slide {
+        flex: 0 0 250px;
+    }
+    
+    .product-card {
+        max-width: 250px;
+    }
+    
+    .product-image {
+        height: 180px;
+    }
+    
+    .product-name {
+        font-size: 16px;
+    }
+    
+    .product-price {
+        font-size: 20px;
+    }
+}
+@media (max-width: 480px) {
+    .carousel-container {
+        padding: 20px 10px;
+    }
+    
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-nav ion-icon {
+        font-size: 18px;
+    }
+    
+    .carousel-prev {
+        left: 10px;
+    }
+    
+    .carousel-next {
+        right: 10px;
+    }
+    
+    .splide__slide {
+        flex: 0 0 220px;
+    }
+    
+    .product-card {
+        max-width: 220px;
+    }
+    
+    .product-image {
+        height: 160px;
+    }
+    
+    .product-info {
+        padding: 15px;
+    }
+    
+    .product-name {
+        font-size: 15px;
+    }
+    
+    .product-price {
+        font-size: 18px;
+    }
+}
