@@ -1,9 +1,11 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, AfterViewInit } from '@angular/core';
 import { Swiper } from 'swiper';
+import { RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -12,11 +14,22 @@ export class HomePage implements OnInit, AfterViewInit {
   private swiper: Swiper | undefined;
   private currentIndex: number = 0;
   private slidesPerView: number = 3;
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     (window as any).scrollCarousel = (direction: 'prev' | 'next') => {
       this.scrollCarousel(direction);
     };
+     this.route.fragment.subscribe(fragment => {
+      if (fragment === 'deals') {
+        setTimeout(() => {
+          const element = document.getElementById('deals');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 50);
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -85,5 +98,11 @@ export class HomePage implements OnInit, AfterViewInit {
     }
   }, 400);
   }
-
+  scrollToDeals(event: Event): void {
+    event.preventDefault();
+    const element = document.getElementById('deals');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }

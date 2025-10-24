@@ -67,6 +67,7 @@
   transform: translateY(-3px);
   color: #fff;
   cursor: pointer;
+  transition: 0.3s;
 }
 .Logo:active {
   box-shadow: none;
@@ -137,6 +138,7 @@
 .navigationMenu a:hover {
   color: #ff751f;
   transition: 0.3s;
+  cursor: pointer;
 }
 .Cart{
     height: 65px;

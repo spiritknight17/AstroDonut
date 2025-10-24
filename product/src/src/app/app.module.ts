@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
 import { HomePage } from './home-page/home-page';
+import { Menu } from './menu/menu';
 import { RouterOutlet } from '@angular/router';
 
 @NgModule({
@@ -18,7 +19,9 @@ import { RouterOutlet } from '@angular/router';
     AppComponent,
     Header,
     Footer,
-    HomePage
+    HomePage,
+    Menu,
+    RouterOutlet
   ],
   providers: [],
   bootstrap: [],
