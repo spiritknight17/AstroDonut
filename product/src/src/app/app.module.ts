@@ -9,6 +9,9 @@ import { Footer } from './footer/footer';
 import { HomePage } from './home-page/home-page';
 import { Menu } from './menu/menu';
 import { RouterOutlet } from '@angular/router';
+import { AboutUs } from './about-us/about-us';
+import { Cart } from './cart/cart';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [],
@@ -16,11 +19,14 @@ import { RouterOutlet } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     AppComponent,
     Header,
     Footer,
     HomePage,
     Menu,
+    AboutUs,
+    Cart,
     RouterOutlet
   ],
   providers: [],

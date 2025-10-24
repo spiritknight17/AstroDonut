@@ -1,19 +1,24 @@
 <div class="header">
     <div class="SubHeader">
-        <a routerLink="/"><img src="assets/icons/Logo/AstroDonutLogo.png" alt="Logo" class="Logo"></a>
+        <a (click)="goToHome()"><img src="assets/icons/Logo/AstroDonutLogo.png" alt="Logo" class="Logo"></a>
+        <!-- Pending Modification -->
         <div class="searchBox">
             <input class="searchInput" type="text" name="" placeholder="Craving Something?">
             <button class="searchButton" href="#">
                 <img src="assets/icons/SearchIcon/DonutSearchIcon.png" alt="SearchIcon" class="SearchIcon">
             </button>
         </div>
+        <!-- End Pending Modification -->
         <nav class="navigationMenu">
             <a routerLink="/">Home</a>
             <a routerLink="/menu">Menu</a>
             <a (click)="goToDeals()">Deals</a>
             <a routerLink="/about">About Us</a>
+            <!-- Pending Modification -->
             <a routerLink="/locations">Locations</a>
+            <!-- End Pending Modification -->
         </nav>
-        <img src="assets/icons/CartIcon/Cart.svg" alt="Cart" class="Cart">
+        <img src="assets/icons/CartIcon/Cart.svg" alt="Cart" class="Cart" (click)="toggleCartPopup()">
     </div>
+    <app-cart [showCart]="showCart" [cartItems]="cartItems" [totalItems]="totalItems" (closeCart)="closeCartPopup()"></app-cart>
 </div>

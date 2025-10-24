@@ -1,0 +1,19 @@
+<div class="showCart" *ngIf="showCart" @cartAnimation (click)="closeCartPopup($event)">
+    <div class="showCartContent" (click)="$event.stopPropagation()">
+        <div class="cartHeader">
+            <button class="cartCloseButton" (click)="closeCartPopup()">&times;</button>
+        </div>
+        <div class="cartItems">
+            <p *ngIf="cartItems.length === 0">Your Cart is Empty</p>
+            <div *ngFor="let item of cartItems" class="Items">
+                <span class="itemName">{{ item.name }}</span>
+                <span class="itemQuantity">x{{ item.quantity }}</span>
+                <span class="itemPrice">\${{ item.price * item.quantity | number:'1.2-2' }}</span>
+            </div>
+        </div>
+        <div class="cartFooter">
+            <div class="cartTotal">Total: ${{ getTotalPrice() | number:'1.2-2' }}</div>
+            <button class="checkoutButton">Checkout</button>
+        </div>
+    </div>
+</div>
