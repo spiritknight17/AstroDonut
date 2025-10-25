@@ -1,19 +1,21 @@
 <div class="showCart" *ngIf="showCart" @cartAnimation (click)="closeCartPopup($event)">
     <div class="showCartContent" (click)="$event.stopPropagation()">
         <div class="cartHeader">
-            <button class="cartCloseButton" (click)="closeCartPopup()">&times;</button>
+            <button class="cartCloseButton" (click)="closeCartPopup()"><img src="assets/icons/XIcon/XBack.svg" alt="Close Cart"></button>
         </div>
         <div class="cartItems">
-            <p *ngIf="cartItems.length === 0">Your Cart is Empty</p>
+            <h1 *ngIf="cartItems.length === 0">Your Cart is Empty, Please buy something!</h1>
+            <img *ngIf="cartItems.length === 0" src="assets/icons/SadAstronautIcon/Sad Astronaut.svg" alt="Empty Cart" class="sadAstronaut">
             <div *ngFor="let item of cartItems" class="Items">
                 <span class="itemName">{{ item.name }}</span>
                 <span class="itemQuantity">x{{ item.quantity }}</span>
                 <span class="itemPrice">\${{ item.price * item.quantity | number:'1.2-2' }}</span>
+                <div class="cartTotal">Total: ${{ getTotalPrice() | number:'1.2-2' }}</div>
             </div>
         </div>
         <div class="cartFooter">
-            <div class="cartTotal">Total: ${{ getTotalPrice() | number:'1.2-2' }}</div>
-            <button class="checkoutButton">Checkout</button>
+            <button *ngIf="cartItems.length === 0" class="continueShoppingButton" routerLink="/menu" (click)="closeCartPopup()">Continue Shopping</button>
+            <button *ngIf="cartItems.length > 0" class="checkoutButton">Checkout</button>
         </div>
     </div>
 </div>

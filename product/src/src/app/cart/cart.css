@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 .showCart {
   position: fixed;
   top: 0;
@@ -14,14 +15,15 @@
   opacity: 1;
 }
 .showCartContent {
-  background: white;
+  background: #f6f6e9;
   border-radius: 10px;
   padding: 20px;
-  max-width: 400px;
+  max-width: 1000px;
   width: 90%;
-  max-height: 80vh;
+  max-height: 5000px;
   overflow-y: auto;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: fixed;
 }
 .showCartContent.showing {
   transform: translateY(0);
@@ -29,24 +31,34 @@
 
 .cartHeader {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px;
-  border-bottom: 1px solid #eee;
   padding-bottom: 10px;
 }
 
 .cartCloseButton {
   background: none;
   border: none;
-  font-size: 24px;
   cursor: pointer;
   color: #666;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartCloseButton img {
+  width: 20px;
+  height: 20px;
 }
 
 .cartCloseButton:hover {
-  color: #000;
+  filter: brightness(0) saturate(100%) invert(64%) sepia(8%) saturate(1627%) hue-rotate(136deg) brightness(92%) contrast(90%);
   cursor: pointer;
+  transition: 0.1s;
 }
 
 .cartItems {
@@ -61,7 +73,6 @@
 }
 
 .cartFooter {
-  border-top: 1px solid #eee;
   padding-top: 15px;
 }
 
@@ -83,4 +94,46 @@
 
 .checkoutButton:hover {
   background-color: #0056b3;
+}
+.cartItems h1 {
+    font-family: 'Borsok';
+    font-size: 24px;
+    color: #f7b9a1;
+    position: relative;
+    height: auto;
+    text-align: center;
+    letter-spacing: 2px;
+}
+.sadAstronaut {
+    display: block;
+    width: 150px;
+    height: auto;
+    margin: 0 auto;
+}
+.cartFooter{
+    display: flex;       
+    justify-content: center;
+    align-items: center;   
+    position: relative;
+}
+.cartFooter button {
+    border: solid 2px #f7b9a1;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Borsok';
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 100px;
+    background: transparent;
+    width: 500px;
+    height: 50px;
+    color: #f7b9a1;
+    letter-spacing: 2px;
+    position: relative;
+}
+.cartFooter button:hover{
+    background-color: #f7b9a1;
+    color: #f6f6e9;
+    transition: 0.3s;
 }

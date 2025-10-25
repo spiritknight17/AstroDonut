@@ -1,10 +1,11 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule, NgIf, NgFor, NgForOf, DecimalPipe } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
-  imports: [NgIf, NgForOf, DecimalPipe],
+  imports: [NgIf, NgForOf, DecimalPipe, RouterModule],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
   animations: [
