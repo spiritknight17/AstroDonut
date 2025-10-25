@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url('https://fonts.cdnfonts.com/css/cuatra');
+@import url('https://fonts.cdnfonts.com/css/montserrat');
 .HomePage {
     width: 100%;
     background-color: black;
@@ -26,10 +28,15 @@
 .HomeSection2{
     width: 50%;
     Height: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
     display: flex;
     position: relative;
-
+    background-image: url('/assets/Poster/Poster.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
 }
 .HomeSection1 h1 {
     font-family: 'Borsok';
@@ -42,7 +49,7 @@
     letter-spacing: 2px;
 }
 .HomeSection1 p {
-    font-family: monospace;
+    font-family: 'Montserrat';
     font-size: 16px;
     color: #f6f6e9;
     position: relative;
@@ -52,6 +59,23 @@
     text-align: center;
     width: 600px;
 }
+.HomeSection1Text{
+    opacity: 0;
+    transform: translateY(50px) scaleX(0);
+    transition-property: opacity, transform, overlay, display;
+    transition-duration: 0.7s;
+    transition-behavior: allow-discrete;
+}
+.HomeSection1Text.popover-open{
+    opacity: 1;
+    transform: translateY(0) scaleX(1);
+}
+@starting-style{
+    .HomeSection1Text.popover-open{
+        opacity: 0;
+        transform: translateY(50px) scaleX(0);
+    }
+}
 .HomeSection1Buttons {
     display: flex;       
     justify-content: center;
@@ -59,6 +83,21 @@
     position: relative;
     gap: 20px;
     top: 215px;
+    opacity: 0;
+    transform: translateY(50px) scaleX(0);
+    transition-property: opacity, transform, overlay, display;
+    transition-duration: 0.7s;
+    transition-behavior: allow-discrete;
+}
+.HomeSection1Buttons.popover-open{
+    opacity: 1;
+    transform: translateY(0) scaleX(1);
+}
+@starting-style{
+    .HomeSection1Buttons.popover-open{
+        opacity: 0;
+        transform: translateY(50px) scaleX(0);
+    }
 }
 .HomeSection1Buttons button{
     border: solid 2px #f6f6e9;
@@ -104,9 +143,14 @@
     text-align: center;
     top: 80px;
     letter-spacing: 2px;
+    opacity: 0;
+    transform: translateY(50px) scaleX(0);
+    transition-property: opacity, transform, overlay, display;
+    transition-duration: 0.7s;
+    transition-behavior: allow-discrete;
 }
 .DealsDescription p {
-    font-family: monospace;
+    font-family: 'Montserrat';
     font-size: 16px;
     color: black;
     position: relative;
@@ -115,17 +159,53 @@
     margin-left: auto;
     margin-right: auto;
     top: 100px;
+    opacity: 0;
+    transform: translateY(50px) scaleX(0);
+    transition-property: opacity, transform, overlay, display;
+    transition-duration: 0.7s;
+    transition-behavior: allow-discrete;
+}
+.DealsDescription p.popover-open{
+    opacity: 1;
+    transform: translateY(0) scaleX(1);
+}
+@starting-style{
+    .DealsDescription p.popover-open{
+        opacity: 0;
+        transform: translateY(50px) scaleX(0);
+    }
+}
+.DealsDescription h1.popover-open{
+    opacity: 1;
+    transform: translateY(0) scaleX(1);
+}
+@starting-style{
+    .DealsDescription h1.popover-open{
+        opacity: 0;
+        transform: translateY(50px) scaleX(0);
+    }
 }
 .carousel-container {
     position: relative;
     width: 100%;
     padding: 40px 20px;
+    z-index: 50;
 }
-
 .splide__track {
     width: 100%;
     overflow: hidden;
     height: 400px;
+}
+.product-card.scroll-animate {
+    animation: slowMove 20s linear infinite;
+}
+@keyframes slowMove {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-20px);
+    }
 }
 
 .carousel-nav {
@@ -241,7 +321,7 @@
 }
 
 .rating-text {
-    font-family: monospace;
+    font-family: 'Montserrat';
     font-size: 14px;
     font-weight: 500;
     color: black;
@@ -255,6 +335,136 @@
     color: white;
     margin: 0;
     letter-spacing: 2px;
+}
+.Donut {
+    position: relative;
+    width: auto;
+    height: auto;
+    max-width: 75%;
+    max-height: 75%;
+    z-index: 1;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s ease;
+    transform-origin: center;
+    contain: layout;
+}
+
+.Donut.scrolling {
+    animation: rotate 10s linear infinite;
+}
+
+.Donut.popover-open {
+    opacity: 1;
+    transform: scale(1);
+}
+.Donut1 {
+    position: absolute;
+    top: 5%;
+    left: 15%;
+    width: 10%;
+    height: auto;
+    z-index: 1;
+    rotate: 40deg;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: none;
+}
+.Donut3 {
+    position: absolute;
+    top: 15%;
+    left: -2%;
+    width: 20%;
+    height: auto;
+    z-index: 2;
+    rotate: -40deg;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: none;
+}
+.Donut2 {
+    position: absolute;
+    top: 15%;
+    right: -2%;
+    width: 20%;
+    height: auto;
+    z-index: 2;
+    rotate: -40deg;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: none;
+}
+.IcedCoffee1 {
+    position: absolute;
+    top: 1%;
+    right: 10%;
+    width: 20%;
+    height: auto;
+    z-index: 2;
+    rotate: -125deg;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: none;
+}
+.Donut1.pan-visible, .Donut3.pan-visible {
+    animation: panFromLeft 0.6s ease-out forwards;
+}
+.Donut1.pan-hidden, .Donut3.pan-hidden {
+    animation: panToLeft 0.6s ease-in forwards;
+}
+.Donut2.pan-visible, .IcedCoffee1.pan-visible {
+    animation: panFromRight 0.6s ease-out forwards;
+}
+.Donut2.pan-hidden, .IcedCoffee1.pan-hidden {
+    animation: panToRight 0.6s ease-in forwards;
+}
+@keyframes rotate {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
+@keyframes panFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes panToLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+@keyframes panFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes panToRight {
+    from {
+        transform: translateX(100%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 0;
+    }
 }
 @media (max-width: 768px) {
     .carousel-container {

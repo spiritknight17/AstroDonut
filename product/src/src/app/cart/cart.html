@@ -6,16 +6,20 @@
         <div class="cartItems">
             <h1 *ngIf="cartItems.length === 0">Your Cart is Empty, Please buy something!</h1>
             <img *ngIf="cartItems.length === 0" src="assets/icons/SadAstronautIcon/Sad Astronaut.svg" alt="Empty Cart" class="sadAstronaut">
+            <!-- Pending Modification -->
             <div *ngFor="let item of cartItems" class="Items">
                 <span class="itemName">{{ item.name }}</span>
                 <span class="itemQuantity">x{{ item.quantity }}</span>
                 <span class="itemPrice">\${{ item.price * item.quantity | number:'1.2-2' }}</span>
                 <div class="cartTotal">Total: ${{ getTotalPrice() | number:'1.2-2' }}</div>
             </div>
+            <!-- End Pending Modification -->
         </div>
         <div class="cartFooter">
             <button *ngIf="cartItems.length === 0" class="continueShoppingButton" routerLink="/menu" (click)="closeCartPopup()">Continue Shopping</button>
+            <!-- Pending Modification -->
             <button *ngIf="cartItems.length > 0" class="checkoutButton">Checkout</button>
+            <!-- End Pending Modification -->
         </div>
     </div>
 </div>
