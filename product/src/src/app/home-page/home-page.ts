@@ -3,6 +3,8 @@ import { Swiper } from 'swiper';
 import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Product } from '../model/product';
+import { ProductService } from '../service/product.service';
 
 @Component({
   selector: 'app-home-page',
@@ -20,7 +22,8 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   private lastTimestamp: number = 0;
   private isManuallyScrolling: boolean = false;
   private manualScrollTimeout: any;
-  constructor(private route: ActivatedRoute) {}
+  //products: Product[] = [];
+  constructor(private productService: ProductService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     (window as any).scrollCarousel = (direction: 'prev' | 'next') => {
