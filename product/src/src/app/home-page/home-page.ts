@@ -2,10 +2,11 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, AfterViewInit, OnDestroy } f
 import { Swiper } from 'swiper';
 import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
