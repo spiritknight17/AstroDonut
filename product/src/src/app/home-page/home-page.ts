@@ -22,10 +22,12 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   private lastTimestamp: number = 0;
   private isManuallyScrolling: boolean = false;
   private manualScrollTimeout: any;
-  //products: Product[] = [];
+  public products: Product[] = [];
   constructor(private productService: ProductService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    console.log("ngOnInit called");
+      this.productService.getData().subscribe(data => {this.products = data; });
     (window as any).scrollCarousel = (direction: 'prev' | 'next') => {
       this.scrollCarousel(direction);
     };
@@ -82,11 +84,9 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     });
   }
   scrollCarousel(direction: 'prev' | 'next'): void {
-    // Stop continuous animation and switch to manual scrolling
     this.stopAutoPlay();
     this.isManuallyScrolling = true;
     
-    // Clear any existing timeout
     if (this.manualScrollTimeout) {
       clearTimeout(this.manualScrollTimeout);
     }
@@ -118,11 +118,10 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
       }
     }, 400);
     
-    // Resume auto-play after a delay
     this.manualScrollTimeout = setTimeout(() => {
       this.isManuallyScrolling = false;
       this.startAutoPlay();
-    }, 3000); // Resume after 3 seconds
+    }, 3000); 
   }
   scrollToDeals(event: Event): void {
     event.preventDefault();
