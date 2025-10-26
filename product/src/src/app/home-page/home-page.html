@@ -34,8 +34,25 @@
                 <ion-icon name="chevron-forward-outline"></ion-icon>
             </button>
             <div class="splide__track">
-		        <ul class="splide__list" id="carousel-list">
-			    <li class="splide__slide">
+		        <ul class="splide__list" id="carousel-list" *ngIf="products && products.length > 0">
+                <li class="splide__slide" *ngFor="let prod of products" >
+                    <div class="product-card">
+                        <img src="../assets/products/{{prod.imageFile}}.png" alt="{{prod.name}}" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-name">{{prod.name}}</h3>
+                            <div class="product-rating">
+                                <ion-icon name="star-outline" class="star"></ion-icon>
+                                <ion-icon name="star-outline" class="star"></ion-icon>
+                                <ion-icon name="star-outline" class="star"></ion-icon>
+                                <ion-icon name="star-outline" class="star"></ion-icon>
+                                <ion-icon name="star-outline" class="star"></ion-icon>
+                                <span class="rating-text">{{prod.ratings}}</span>
+                            </div>
+                            <div class="product-price">{{prod.price}}</div>
+                        </div>
+                    </div>
+			    </li>
+			    <!--<li class="splide__slide">
                     <div class="product-card">
                         <img src="assets/Placeholder/Placeholder.svg" alt="Product 1" class="product-image">
                         <div class="product-info">
@@ -119,7 +136,7 @@
                             <div class="product-price">$0</div>
                         </div>
                     </div>
-			    </li>
+			    </li>-->
 		        </ul>
             </div>
         </div>

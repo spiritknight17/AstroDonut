@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Product } from '../model/product';
 import { ProductService } from '../service/product.service';
+import { ProductCategory } from '../model/product-category';
 
 @Component({
   selector: 'app-home-page',
