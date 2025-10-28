@@ -2,7 +2,6 @@ package com.payor.serviceimpl;
 
 import com.payor.entity.ProductData;
 import com.payor.model.Product;
-import com.payor.model.ProductCategory;
 import com.payor.repository.ProductDataRepository;
 import com.payor.service.ProductService;
 import com.payor.util.Transform;
@@ -39,46 +38,7 @@ public class ProductServiceImpl implements ProductService {
         }
         return products;
     }
-    @Override
-    public List<ProductCategory> listProductCategories()
-    {
-        Map<String,List<Product>> mappedProduct = getCategoryMappedProducts();
-        List<ProductCategory> productCategories = new ArrayList<>();
-        for(String categoryName: mappedProduct.keySet()){
-            ProductCategory productCategory =  new ProductCategory();
-            productCategory.setCategoryName(categoryName);
-            productCategory.setProducts(mappedProduct.get(categoryName));
-            productCategories.add(productCategory);
-        }
-        return productCategories;
-    }
-    @Override
-    public Map<String,List<Product>> getCategoryMappedProducts()
-    {
-        Map<String,List<Product>> mapProducts = new HashMap<String,List<Product>>();
-
-        List<ProductData>productDataRecords = new ArrayList<>();
-        List<Product> products;
-
-        productDataRepository.findAll().forEach(productDataRecords::add);
-        Iterator<ProductData> it = productDataRecords.iterator();
-
-        while(it.hasNext()) {
-            Product product = new Product();
-            ProductData productData = it.next();
-
-            if(mapProducts.containsKey(productData.getCategoryName())){
-                products = mapProducts.get(productData.getCategoryName());
-            }
-            else {
-                products = new ArrayList<Product>();
-                mapProducts.put(productData.getCategoryName(), products);
-            }
-            product = transformProductData.transform(productData);
-            products.add(product);
-        }
-        return mapProducts;
-    }
+    // Category mapping methods removed to eliminate productCategory concept
 
     @Override
     public Product[] getAll() {

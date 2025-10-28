@@ -1,1 +1,9 @@
-<p>menu works!</p>
+<div  class="box" *ngFor="let prod of products" >
+    <img class="productimg" src="../assets/products/{{prod.imageFile}}.png"/>
+    <p class="productname">{{prod.name}}</p>
+    <p class="productcategory">{{prod.description}}</p> 
+    <p class="productcategory">{{prod.categoryName}}</p> 
+    <p class="productcategory">{{prod.unitOfMeasure}}</p> 
+    <p class="productcategory">{{prod.price}}</p>        
+    <img  routerLink="/cart" class="cart" src="../assets/icons/shoppingcart.svg" />
+</div>

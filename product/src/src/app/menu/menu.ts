@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Product } from '../model/product';
+import { ProductService } from '../service/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './menu.html',
   styleUrl: './menu.css'
 })
 export class Menu {
-
+  public products: Product[] = [];
+  constructor(private productService: ProductService, private route: ActivatedRoute) {}
+  ngOnInit(): void {
+    console.log("ngOnInit called")
+    this.productService.getData().subscribe(data => this.products = data);
+  }
 }

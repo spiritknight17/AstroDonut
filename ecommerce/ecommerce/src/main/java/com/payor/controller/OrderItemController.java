@@ -38,28 +38,7 @@ public class OrderItemController {
     }
 
 
-    @RequestMapping("/api/orderitem/{customerId}")
-    public ResponseEntity<?> getOrderItems(@PathVariable final Integer customerId, @RequestParam (name="status") Integer status)
-    {
-        HttpHeaders headers = new HttpHeaders();
-        ResponseEntity<?> response;
-        try {
-            if(status == 0) {
-                List<OrderItem> orderItems = orderItemService.getCartItems(customerId);
-                response = ResponseEntity.ok( orderItems);
-            }
-            else {
-                List<OrderItem> orderItems = orderItemService.getOrderItems(customerId);
-                response = ResponseEntity.ok( orderItems);
-            }
-        }
-        catch( Exception ex)
-        {
-            log.error("Failed to retrieve product with id : {}", ex.getMessage(), ex);
-            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
-        }
-        return response;
-    }
+    // Customer-based endpoint removed - no longer supported
 
     @PutMapping("/api/orderitem")
     public ResponseEntity<?> add(@RequestBody OrderItem orderItem){

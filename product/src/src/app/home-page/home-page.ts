@@ -1,11 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { Swiper } from 'swiper';
 import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Product } from '../model/product';
 import { ProductService } from '../service/product.service';
-import { ProductCategory } from '../model/product-category';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -24,11 +24,14 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   private isManuallyScrolling: boolean = false;
   private manualScrollTimeout: any;
   public products: Product[] = [];
-  constructor(private productService: ProductService, private route: ActivatedRoute) {}
+  constructor(private productService: ProductService, private route: ActivatedRoute, private el: ElementRef) {}
 
   ngOnInit(): void {
     console.log("ngOnInit called");
-      this.productService.getData().subscribe(data => {this.products = data; });
+      this.productService.getTopRatedProducts().subscribe(topProducts => {
+        this.products = topProducts;
+        setTimeout(() => this.initializeCarousel(), 0);
+      });
     (window as any).scrollCarousel = (direction: 'prev' | 'next') => {
       this.scrollCarousel(direction);
     };
@@ -42,24 +45,22 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
         }, 50);
       }
     });
+    setTimeout(() => {
+        const homeElements = this.el.nativeElement.querySelectorAll('.HomeSection1Text, .HomeSection1Buttons, .Donut');
+        
+        homeElements.forEach((el: HTMLElement) => {
+            el.classList.add('popover-open');
+            if (el.classList.contains('Donut')) {
+                el.classList.add('scrolling');
+            }
+        });
+    }, 1000);
+    this.initializeAnimations();
   }
 
   ngAfterViewInit(): void {
-  const carouselList = document.getElementById('carousel-list');
-  if (!carouselList) return;
-  const slides = Array.from(carouselList.children);
-  slides.forEach(slide => {
-    const clone = slide.cloneNode(true);
-    carouselList.appendChild(clone);
-  });
-
-  this.slidesPerView = 3;
-  (window as any).scrollCarousel = (direction: 'prev' | 'next') => {
-    this.scrollCarousel(direction);
-  };
-  this.initializeAnimations();
-  this.startAutoPlay();
-}
+    this.initializeCarousel();
+  }
 
   private initializeSwiper(): void {
     this.swiper = new Swiper('.tranding-slider', {
@@ -131,7 +132,25 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
+  
   private initializeAnimations(): void {
+    setTimeout(() => {
+      const homeElements = document.querySelectorAll('.HomeSection1Text, .HomeSection1Buttons, .Donut, .DealsDescription h1, .DealsDescription p');
+      homeElements.forEach(el => {
+      el.classList.add('popover-open');
+      if (el.classList.contains('Donut') || el.classList.contains('DealsDescription p') || el.classList.contains('DealsDescription h1')) {
+        el.classList.add('scrolling');
+      }
+    });
+    }, 1000);
+    
+    
+    const panElements = document.querySelectorAll('.Donut1, .Donut3, .Donut2, .IcedCoffee1');
+    panElements.forEach(el => {
+      el.classList.remove('pan-hidden');
+      el.classList.add('pan-visible');
+    });
+    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.target.classList.contains('Donut') || entry.target.classList.contains('DealsDescription p') || entry.target.classList.contains('DealsDescription h1')) {
@@ -152,6 +171,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     });
+    
     const panObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -166,6 +186,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
       threshold: 0.1,
       rootMargin: '0px'
     });
+    
     const carouselObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -188,9 +209,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     const donut3Element = document.querySelector('.Donut3');
     const donut2Element = document.querySelector('.Donut2');
     const icedCoffee1Element = document.querySelector('.IcedCoffee1');
-    const productCardElement = document.querySelector('.product-card');
-    if (!productCardElement) return;
-
+    
     if (homeSection1Text) observer.observe(homeSection1Text);
     if (homeSection1Buttons) observer.observe(homeSection1Buttons);
     if (donutElement) observer.observe(donutElement);
@@ -200,34 +219,60 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     if (donut3Element) panObserver.observe(donut3Element);
     if (donut2Element) panObserver.observe(donut2Element);
     if (icedCoffee1Element) panObserver.observe(icedCoffee1Element);
-    if (productCardElement) carouselObserver.observe(productCardElement);
+    
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach(card => carouselObserver.observe(card));
+  }
+
+  private initializeCarousel(): void {
+    if (!this.products || this.products.length === 0) return;
+
+    const carouselList = document.getElementById('carousel-list');
+    if (!carouselList) return;
+
+    if (!carouselList.hasAttribute('data-cloned')) {
+      const slides = Array.from(carouselList.children);
+      slides.forEach((slide) => {
+        const clone = slide.cloneNode(true);
+        carouselList.appendChild(clone);
+      });
+      carouselList.setAttribute('data-cloned', 'true');
+    }
+
+    this.startAutoPlay();
   }
 
   private startAutoPlay(): void {
     const carouselList = document.getElementById('carousel-list');
     if (!carouselList) return;
-    
-    const slideWidth = 310;
+    const gap = 30; 
     let position = 0;
-    const speed = 0.5; // pixels per frame
-    
+    let lastTime = performance.now();
+    const pixelsPerSecond = 60; 
+
     const animate = (timestamp: number) => {
-      if (!this.lastTimestamp) this.lastTimestamp = timestamp;
-      const deltaTime = timestamp - this.lastTimestamp;
-      
-      position += speed;
-      
-      if (position >= slideWidth) {
-        position = 0;
-      }
-      
+      const deltaTime = timestamp - lastTime;
+      lastTime = timestamp;
+
+      position += pixelsPerSecond * (deltaTime / 1000);
       carouselList.style.transition = 'none';
       carouselList.style.transform = `translateX(-${position}px)`;
-      
-      this.lastTimestamp = timestamp;
+
+      let first = carouselList.firstElementChild as HTMLElement | null;
+      while (first) {
+        const firstWidth = (first.getBoundingClientRect().width || 310) + gap;
+        if (position >= firstWidth) {
+          position -= firstWidth;
+          carouselList.appendChild(first);
+          first = carouselList.firstElementChild as HTMLElement | null;
+        } else {
+          break;
+        }
+      }
+
       this.animationFrame = requestAnimationFrame(animate);
     };
-    
+
     this.animationFrame = requestAnimationFrame(animate);
   }
 

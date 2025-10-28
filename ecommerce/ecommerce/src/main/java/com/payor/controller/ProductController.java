@@ -1,7 +1,6 @@
 package com.payor.controller;
 
 import com.payor.model.Product;
-import com.payor.model.ProductCategory;
 import com.payor.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +20,18 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping("/api/product")
-    public ResponseEntity<?>  getProductCategories()
+    public ResponseEntity<?> getAllProducts()
     {
         HttpHeaders headers = new HttpHeaders();
         ResponseEntity<?> response;
         try {
-            List<ProductCategory> mappedProducts = productService.listProductCategories();
-            //Map<String,List<Product>> mappedProducts = productService.getCategoryMappedProducts();
-            log.warn("Product Categories Count:::::::" + mappedProducts.size());
-            response = ResponseEntity.ok(mappedProducts);
+            List<Product> products = productService.getAllProducts();
+            log.warn("Products Count:::::::" + products.size());
+            response = ResponseEntity.ok(products);
         }
         catch( Exception ex)
         {
-            log.error("Failed to retrieve product with id : {}", ex.getMessage(), ex);
+            log.error("Failed to retrieve products : {}", ex.getMessage(), ex);
             response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
         }
         return response;

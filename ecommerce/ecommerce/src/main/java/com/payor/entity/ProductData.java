@@ -17,12 +17,8 @@ public class    ProductData {
     int id;
     String name;
     String description;
-    @Column(name = "category_name")
-    String categoryName;
-    @Column(name = "unit_of_measure")
     String unitOfMeasure;
-    String price;
-    @Column(name = "image_file")
+    double price;
     String imageFile;
     int ratings;
 

@@ -17,12 +17,9 @@ public class OrderItemData {
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     int orderId;
-    int customerId;
-    String customerName;
     int productId;
     String productName;
     String productDescription;
-    String productCategoryName;
     String productImageFile;
     String productUnitOfMeasure;
     double quantity;

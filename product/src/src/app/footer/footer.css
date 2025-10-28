@@ -13,6 +13,16 @@
     position: relative;
     left: 225px;
 }
+.FooterLogo:hover{
+  transform: translateY(-3px);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.FooterLogo:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
 .SocialMediaIcons img:hover{
     filter: brightness(0) saturate(100%) invert(57%) sepia(40%) saturate(3302%) hue-rotate(344deg) brightness(99%) contrast(104%);
     cursor: pointer;

@@ -44,45 +44,7 @@ public class OrderItemServiceImpl implements OrderItemService {
         return orderItems;
     }
 
-    @Override
-    public List<OrderItem> getOrderItems(Integer customerId) {
-        List<OrderItemData> orderItemDataRecords = new ArrayList<>();
-        List<OrderItem> orderItems =  new ArrayList<>();
-
-        orderItemDataRepository.findAllByCustomerId(customerId).forEach(orderItemDataRecords::add);
-        Iterator<OrderItemData> it = orderItemDataRecords.iterator();
-        OrderItem orderItem;
-
-        while(it.hasNext()) {
-            OrderItemData orderItemData = it.next();
-            if(orderItemData.getStatus() == OrderItemStatus.Ordered) {
-                orderItem = transformOrderItemData.transform(orderItemData);
-                orderItems.add(orderItem);
-            }
-        }
-        return orderItems;
-    }
-
-
-    //@Override
-    public List<OrderItem> getCartItems(Integer customerId) {
-
-        List<OrderItemData> orderItemDataRecords = new ArrayList<>();
-        List<OrderItem> orderItems =  new ArrayList<>();
-
-        orderItemDataRepository.findAllByCustomerId(customerId).forEach(orderItemDataRecords::add);
-        Iterator<OrderItemData> it = orderItemDataRecords.iterator();
-        OrderItem orderItem;
-
-        while(it.hasNext()) {
-            OrderItemData orderItemData = it.next();
-            if(orderItemData.getStatus() == OrderItemStatus.Created) {
-                orderItem = transformOrderItemData.transform(orderItemData);
-                orderItems.add(orderItem);
-            }
-        }
-        return orderItems;    
-    }
+    // Customer-related methods removed - no longer supported
 
     @Override
     public OrderItem create(OrderItem orderItem) {
