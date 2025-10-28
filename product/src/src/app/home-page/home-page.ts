@@ -23,6 +23,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   private lastTimestamp: number = 0;
   private isManuallyScrolling: boolean = false;
   private manualScrollTimeout: any;
+  private autoScrollPosition = 0;
   public products: Product[] = [];
   constructor(private productService: ProductService, private route: ActivatedRoute, private el: ElementRef) {}
 
@@ -245,34 +246,28 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   private startAutoPlay(): void {
     const carouselList = document.getElementById('carousel-list');
     if (!carouselList) return;
-    const gap = 30; 
-    let position = 0;
+    const gap = 30;
     let lastTime = performance.now();
-    const pixelsPerSecond = 60; 
-
+    const pixelsPerSecond = 60;
     const animate = (timestamp: number) => {
       const deltaTime = timestamp - lastTime;
       lastTime = timestamp;
-
-      position += pixelsPerSecond * (deltaTime / 1000);
+      this.autoScrollPosition += pixelsPerSecond * (deltaTime / 1000);
       carouselList.style.transition = 'none';
-      carouselList.style.transform = `translateX(-${position}px)`;
-
+      carouselList.style.transform = `translateX(-${this.autoScrollPosition}px)`;
       let first = carouselList.firstElementChild as HTMLElement | null;
       while (first) {
         const firstWidth = (first.getBoundingClientRect().width || 310) + gap;
-        if (position >= firstWidth) {
-          position -= firstWidth;
+        if (this.autoScrollPosition >= firstWidth) {
+          this.autoScrollPosition -= firstWidth;
           carouselList.appendChild(first);
           first = carouselList.firstElementChild as HTMLElement | null;
         } else {
           break;
         }
       }
-
       this.animationFrame = requestAnimationFrame(animate);
     };
-
     this.animationFrame = requestAnimationFrame(animate);
   }
 
