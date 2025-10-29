@@ -20,4 +20,12 @@ export class Footer {
       }
     });
   }
+  goToDeals() {
+    this.router.navigate(['/'], { fragment: 'deals' }).then(() => {
+      const element = document.getElementById('deals');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start'});
+      }
+    });
+  }
 }

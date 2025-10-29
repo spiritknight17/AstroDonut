@@ -3,11 +3,11 @@
         <div class="Logo">
             <a (click)="goToHome()"><img src="assets/icons/Logo/AstroDonutLogo.png" alt="Logo" class="FooterLogo"></a>
             <div class="SocialMediaIcons">
-                <img src="assets/icons/socialIcons/Facebook.svg" alt="Facebook" width="40" height="40" href="https://web.facebook.com/matthew.payor.2025">
-                <img src="assets/icons/socialIcons/Instagram.svg" alt="Instagram" width="40" height="40">
-                <img src="assets/icons/socialIcons/X.svg" alt="X" width="40" height="40">
-                <img src="assets/icons/socialIcons/TikTok.svg" alt="TikTok" width="40" height="40">
-                <img src="assets/icons/socialIcons/YouTube.svg" alt="YouTube" width="40" height="40">
+                <a href="https://web.facebook.com/matthew.payor.2025"><img src="assets/icons/socialIcons/Facebook.svg" alt="Facebook" width="40" height="40"></a>
+                <a href="https://www.instagram.com/matthewpayor/"><img src="assets/icons/socialIcons/Instagram.svg" alt="Instagram" width="40" height="40"></a>
+                <a href="https://x.com/MatthewPayor"><img src="assets/icons/socialIcons/X.svg" alt="X" width="40" height="40"></a>
+                <a href="https://www.tiktok.com/@mattpogi30?_t=ZS-90xDJghGrfY&_r=1"><img src="assets/icons/socialIcons/TikTok.svg" alt="TikTok" width="40" height="40"></a>
+                <a href="https://www.youtube.com/@Barusu17"><img src="assets/icons/socialIcons/YouTube.svg" alt="YouTube" width="40" height="40"></a>
             </div>
         </div>
         <div class="AboutUsFooter">
@@ -18,15 +18,19 @@
         </div>
         <div class="QuickLinks">
             <h3>Navigation</h3>
-            <a href="#">Home</a>
-            <a href="#">Menu</a>
-            <a href="#">Deals</a>
-            <a href="#">About Us</a>
+            <a (click)="goToHome()">Home</a>
+            <a routerLink="/menu">Menu</a>
+            <a (click)="goToDeals()">Deals</a>
+            <a routerLink="/about">About Us</a>
+            <!-- Pending Modification -->
             <a href="#">Locations</a>
+            <!-- End Pending Modification -->
         </div>
+        <!-- Pending Modification -->
         <div class="contactUs">
             <button type="button">Contact Us</button>
         </div>
+        <!-- End Pending Modification -->
     </div>
     <div class="Line">
         <hr>
@@ -36,9 +40,9 @@
             <p>© 2025 AstroDonut. All rights reserved.</p>
         </div>
         <div class="PrivacyPolicyandTermsofService">
-            <a href="#">Privacy Policy</a>
+            <a routerLink="/privacy-policy">Privacy Policy</a>
             <p>|</p>
-            <a href="#">Terms of Service</a>
+            <a routerLink="/terms-of-service">Terms of Service</a>
         </div>
     </div>
 </div>

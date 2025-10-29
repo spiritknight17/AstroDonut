@@ -11,6 +11,8 @@ import { Menu } from './menu/menu';
 import { RouterOutlet } from '@angular/router';
 import { AboutUs } from './about-us/about-us';
 import { Cart } from './cart/cart';
+import { Privacypolicy } from './privacypolicy/privacypolicy';
+import { Termsofservice } from './termsofservice/termsofservice';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -27,6 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Menu,
     AboutUs,
     Cart,
+    Privacypolicy,
+    Termsofservice,
     RouterOutlet
   ],
   providers: [],

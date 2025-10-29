@@ -82,6 +82,7 @@
   line-height: 50px;
   gap: 32px;
   font-size: 16px;
+  cursor: pointer;
 }
 .contactUs{
     position: relative;
@@ -138,6 +139,11 @@ hr {
     letter-spacing: 2px;
     display: flex;
     text-decoration: none;
+    cursor: pointer;
+}
+.PrivacyPolicyandTermsofService a:hover{
+    color: #ff751f;
+    transition: 0.3s;
 }
 .PrivacyPolicyandTermsofService {
     padding-right: 25px;
