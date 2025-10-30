@@ -20,7 +20,7 @@
                         <h2 class="menu-unit-of-measure">{{prod.unitOfMeasure}}</h2>
                     </div>
                     <div class="mp">
-                        <h2 class="menu-price">₱{{prod.price}}</h2>
+                        <h2 class="menu-price">₱{{getTotalPrice(prod)}}</h2>
                     </div>
                 </div>
             </div>
@@ -28,11 +28,11 @@
                 <div class="menu-quantity">
                     <h1 class="mq">Quantity</h1>
                     <div class="quantity-manipulator">
-                        <button class="reduce-quantity">
+                        <button class="reduce-quantity" (click)="decreaseQuantity(prod)">
                         <ion-icon name="chevron-back-outline"></ion-icon>
                         </button>
-                        <h1 class="number-quantity">0</h1>
-                        <button class="increase-quantity">
+                        <h1 class="number-quantity">{{prod.quantity}}</h1>
+                        <button class="increase-quantity" (click)="increaseQuantity(prod)">
                         <ion-icon name="chevron-forward-outline"></ion-icon>
                         </button>
                     </div>

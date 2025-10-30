@@ -13,10 +13,21 @@ import { ActivatedRoute } from '@angular/router';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Menu {
-  public products: Product[] = [];
+  public products: (Product & { quantity: number })[] = [];
   constructor(private productService: ProductService, private route: ActivatedRoute) {}
   ngOnInit(): void {
-    console.log("ngOnInit called")
-    this.productService.getData().subscribe(data => this.products = data);
+    console.log("ngOnInit called");
+    this.productService.getData().subscribe((data: Product[]) => {this.products = data.map((p: Product) => ({...p, quantity: 0}));});
+  }
+  increaseQuantity(product: Product & {quantity: number}): void {
+    product.quantity += 1;
+  }
+  decreaseQuantity(product: Product & { quantity: number }): void{
+    if (product.quantity > 0) {
+      product.quantity --;
+    }
+  }
+  getTotalPrice(product: Product & { quantity: number }): number{
+    return product.price * product.quantity;
   }
 }

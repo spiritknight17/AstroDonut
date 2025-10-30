@@ -5,6 +5,8 @@ export class Product {
     description: string = ''
     categoryName: string = ''        
     imageFile: string = ''
-    price: string = "0.0"
+    price: number = 0.0
     unitOfMeasure: string = ""
+    quantity: number = 0;
+    totalPrice: number = 0;
 }
