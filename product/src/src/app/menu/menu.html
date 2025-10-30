@@ -1,4 +1,51 @@
-<div  class="box" *ngFor="let prod of products" >
+<div class="menu">
+    <div class="menu-header">
+        <div class="menu-title-and-description">
+            <h1>Our Menu</h1>
+            <p>Explore our delicious offerings!</p>
+        </div>
+    </div>
+    <div class="menus">
+        <div class="menu-card" *ngFor="let prod of products">
+            <div class="menu-image-column">
+                <img src="../assets/products/{{prod.imageFile}}.png" alt="{{prod.name}}" class="menu-image">
+            </div>
+            <div class="menu-contents">
+                <div class="menu-name-and-description">
+                    <h3 class="menu-name">{{prod.name}}</h3>
+                    <p class="menu-description">{{prod.description}}</p>
+                </div>
+                <div class="menu-unit-of-measure-and-price">
+                    <div class="muom">
+                        <h2 class="menu-unit-of-measure">{{prod.unitOfMeasure}}</h2>
+                    </div>
+                    <div class="mp">
+                        <h2 class="menu-price">₱{{prod.price}}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-quantity-and-buy">
+                <div class="menu-quantity">
+                    <h1 class="mq">Quantity</h1>
+                    <div class="quantity-manipulator">
+                        <button class="reduce-quantity">
+                        <ion-icon name="chevron-back-outline"></ion-icon>
+                        </button>
+                        <h1 class="number-quantity">0</h1>
+                        <button class="increase-quantity">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="buy-button">
+                    <button class="bb">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div  class="box" *ngFor="let prod of products" >
     <img class="productimg" src="../assets/products/{{prod.imageFile}}.png"/>
     <p class="productname">{{prod.name}}</p>
     <p class="productcategory">{{prod.description}}</p> 
@@ -6,4 +53,4 @@
     <p class="productcategory">{{prod.unitOfMeasure}}</p> 
     <p class="productcategory">{{prod.price}}</p>        
     <img  routerLink="/cart" class="cart" src="../assets/icons/shoppingcart.svg" />
-</div>
+</div> -->

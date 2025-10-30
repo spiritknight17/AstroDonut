@@ -1,0 +1,228 @@
+.menu{
+    width: 100%;
+    background-color: #f6f6e9;
+    position: relative;
+    height: auto;
+    padding-top: 103.5px;
+    align-items: center;
+}
+.menu-header{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    height: 225px;
+}
+.menu-title-and-description{
+    color: #f6f6e9;
+    text-align: center;
+    width: 100%;
+}
+.menu-title-and-description h1{
+    font-family: 'Borsok';
+    font-size: 60px;
+    color: #f7b9a1;
+    position: relative;
+    height: auto;
+    text-align: center;
+    letter-spacing: 2px;
+}
+.menu-title-and-description p{
+    font-family: 'Montserrat';
+    font-size: 16px;
+    color: black;
+    position: relative;
+    height: 40px;
+    text-align: center;
+}
+.menus{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 50px;
+    flex-direction: column;
+}
+.menu-card{
+    background: #f7b9a1;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    max-width: 1475px;
+    margin: 10px;
+}
+.menu-image{
+    width: 75%;
+    height: 90%;
+    object-fit: cover;
+    background: white;
+    color: white;
+    border-radius: 25px;
+}
+.menu-image-column {
+    width: 25%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    background-color: #61a6ab;
+}
+.menu-contents{
+    width: 55%;
+}
+.menu-quantity-and-buy {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.menu-name-and-description {
+    height: 75%;
+}
+.menu-unit-of-measure-and-price {
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+.muom {
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.muom h2 {
+    font-family: 'Borsok';
+    font-size: 24px;
+    font-weight: 700;
+    color: #f6f6e9;
+    margin: 0;
+    letter-spacing: 2px;
+}
+.mp {
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.mp h2 {
+    font-family: 'Borsok';
+    font-size: 24px;
+    font-weight: 700;
+    color: #f6f6e9;
+    margin: 0;
+    letter-spacing: 2px;
+}
+.menu-name {
+    font-family: 'Borsok';
+    font-size: 24px;
+    font-weight: 600;
+    color: #f6f6e9;
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+    letter-spacing: 2px;
+    padding-top: 50px;
+    padding-left: 20px;
+}
+.menu-description {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    color: black;
+    position: relative;
+    padding-left: 20px;
+}
+.menu-quantity {
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.buy-button {
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+.buy-button button{
+    border: solid 2px #f7b9a1;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Borsok';
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 100px;
+    background: transparent;
+    width: 200px;
+    height: 50px;
+    color: #f7b9a1;
+    letter-spacing: 2px;
+    position: relative;
+}
+.buy-button button:hover {
+    background-color: #f7b9a1;
+    color: #f6f6e9;
+    transition: 0.3s;  
+}
+.menu-quantity h1{
+    font-family: 'Borsok';
+    font-size: 32px;
+    font-weight: 700;
+    color: #f7b9a1;
+    margin: 10px;
+    letter-spacing: 2px;
+}
+.quantity-manipulator {
+    flex-direction: row;
+    align-items: stretch;
+    display: flex;
+}
+.reduce-quantity {
+    width: 25px;
+    height: auto;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.reduce-quantity:hover{
+    transform: translateY(-5%) scale(1.1);
+}
+.reduce-quantity ion-icon {
+    font-size: 24px;
+    color: black;
+    --ionicon-stroke-width: 80px;
+}
+.increase-quantity{
+    width: 25px;
+    height: auto;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.increase-quantity:hover{
+    transform: translateY(-5%) scale(1.1);
+}
+.increase-quantity ion-icon {
+    font-size: 24px;
+    color: black;
+    --ionicon-stroke-width: 80px;
+}
+.menu-quantity-and-buy {
+    background-color: #f6f6e9;
+    
+}

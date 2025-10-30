@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Product } from '../model/product';
@@ -9,7 +9,8 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-menu',
   imports: [RouterModule, CommonModule],
   templateUrl: './menu.html',
-  styleUrl: './menu.css'
+  styleUrl: './menu.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Menu {
   public products: Product[] = [];
