@@ -49,11 +49,23 @@ public class OrderItemServiceImpl implements OrderItemService {
     @Override
     public OrderItem create(OrderItem orderItem) {
         log.info(" add:Input {}", orderItem.toString());
-
-        OrderItemData orderItemData = transformOrderItem.transform(orderItem);
-        OrderItemData updatedOrderItemData = orderItemDataRepository.save(orderItemData);
-        log.info(" add:Input {}", updatedOrderItemData.toString());
-
+        // Upsert behavior: if an item for the same productId exists, update quantity instead of duplicating
+        Optional<OrderItemData> existingOpt = orderItemDataRepository.findByProductId(orderItem.getProductId());
+        OrderItemData toSave;
+        if (existingOpt.isPresent()) {
+            OrderItemData existing = existingOpt.get();
+            existing.setQuantity(existing.getQuantity() + orderItem.getQuantity());
+            existing.setPrice(orderItem.getPrice());
+            existing.setProductName(orderItem.getProductName());
+            existing.setProductImageFile(orderItem.getProductImageFile());
+            existing.setProductDescription(orderItem.getProductDescription());
+            existing.setProductUnitOfMeasure(orderItem.getProductUnitOfMeasure());
+            toSave = existing;
+        } else {
+            toSave = transformOrderItem.transform(orderItem);
+        }
+        OrderItemData updatedOrderItemData = orderItemDataRepository.save(toSave);
+        log.info(" add:Output {}", updatedOrderItemData.toString());
         return transformOrderItemData.transform(updatedOrderItemData);
     }
 
@@ -140,5 +152,11 @@ public class OrderItemServiceImpl implements OrderItemService {
         else {
             log.info(" Failed >> unable to locate orderItem id: {}",id);
         }
+    }
+
+    @Override
+    public void deleteAll() {
+        orderItemDataRepository.deleteAll();
+        log.info("All order items have been deleted");
     }
 }

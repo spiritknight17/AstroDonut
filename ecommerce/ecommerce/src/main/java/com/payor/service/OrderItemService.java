@@ -13,4 +13,5 @@ public interface OrderItemService {
     List<OrderItem> updateStatus(List<Integer> id, OrderItemStatus orderItemStatus);
     OrderItem get(Integer id);
     void delete (Integer id);
+    void deleteAll();
 }

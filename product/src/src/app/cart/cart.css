@@ -20,10 +20,13 @@
   padding: 20px;
   max-width: 1000px;
   width: 90%;
-  max-height: 5000px;
-  overflow-y: auto;
+  max-height: 80vh;
+  overflow-y: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   position: fixed;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .showCartContent.showing {
   transform: translateY(0);
@@ -56,20 +59,25 @@
 }
 
 .cartCloseButton:hover {
-  filter: brightness(0) saturate(100%) invert(64%) sepia(8%) saturate(1627%) hue-rotate(136deg) brightness(92%) contrast(90%);
+  filter: brightness(0) saturate(100%) invert(65%) sepia(24%) saturate(2238%) hue-rotate(315deg) brightness(98%) contrast(105%);
   cursor: pointer;
   transition: 0.1s;
-}
-
-.cartItems {
-  margin-bottom: 20px;
 }
 
 .Items {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #f0f0f0;
+  background:#f7b9a1;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin: 10px;
+  position: relative;
+  height: auto;
 }
 
 .cartFooter {
@@ -79,6 +87,26 @@
 .cartTotal {
   font-weight: bold;
   margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:#f6f6e9;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 10px;
+  position: relative;
+  height: auto;
+  width: 50%;
+  border: 3px solid #f7b9a1;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  color: gray;
+  flex-shrink: 0;
+}
+.cartTotal h3 {
+  margin: 5px;
 }
 
 .checkoutButton {
@@ -95,6 +123,18 @@
 .checkoutButton:hover {
   background-color: #0056b3;
 }
+.cartItems {
+    flex: 1;
+    overflow-y: auto;
+    max-height: calc(80vh - 200px);
+    padding-right: 5px;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
 .cartItems h1 {
     font-family: 'Borsok';
     font-size: 24px;
@@ -115,6 +155,8 @@
     justify-content: center;
     align-items: center;   
     position: relative;
+    flex-shrink: 0;
+    margin-top: auto;
 }
 .cartFooter button {
     border: solid 2px #f7b9a1;
@@ -136,4 +178,137 @@
     background-color: #f7b9a1;
     color: #f6f6e9;
     transition: 0.3s;
+}
+.removeItemButton {
+  background: transparent;
+  border: none;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+}
+
+.cartButtons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.clearCartButton {
+  border: solid 2px #f7b9a1;
+  color: #f7b9a1;
+  background: transparent;
+  border-radius: 100px;
+  font-family: 'Borsok';
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  width: 20%;
+}
+
+.clearCartButton:hover {
+  background-color: #f7b9a1;
+  color: #f6f6e9;
+  transition: 0.3s;
+}
+.itemImage {
+  width: 90%;
+  height: 90%;
+  border-radius: 25px;
+}
+.itemDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 75%;
+}
+.itemImageContainer {
+  background-color: #61a6ab;
+  width: 25%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.itemInfo{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+.itemName {
+  width: 100%;
+  height: 50%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-family: 'Borsok';
+  font-size: 24px;
+  font-weight: 600;
+  color: #f6f6e9;
+  line-height: 1.3;
+  letter-spacing: 2px;
+}
+.itemQuantity {
+  width: 100%;
+  height: 50%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-family: 'Borsok';
+  font-size: 16px;
+  font-weight: 600px;
+  color: #f6f6e9;
+  line-height: 1.3;
+  letter-spacing: 2px;
+}
+.itemPriceAndRemoveItemButton {
+  background-color: #f6f6e9;
+  width: 25%;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+.itemPrice{
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Borsok';
+  font-size: 24px;
+  font-weight: 600px;
+  color: #f7b9a1;
+  line-height: 1.3;
+  letter-spacing: 2px;
+}
+.Trash {
+    height: 50%;
+    width: 50%;
+}
+.Trash:hover {
+  filter: brightness(0) saturate(100%) invert(65%) sepia(24%) saturate(2238%) hue-rotate(315deg) brightness(98%) contrast(105%);
+  transform: scale(1.2);
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+.cartItems::-webkit-scrollbar {
+  width: 10px;
+}
+
+.cartItems::-webkit-scrollbar-track {
+  background: #f6f6e9;
+  border-radius: 10px;
+}
+
+.cartItems::-webkit-scrollbar-thumb {
+  background: #f7b9a1;
+  border-radius: 10px;
+  border: 2px solid #f6f6e9;
+}
+
+.cartItems::-webkit-scrollbar-thumb:hover {
+  background: #e89c84;
 }

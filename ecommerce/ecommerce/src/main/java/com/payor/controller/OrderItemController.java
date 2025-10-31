@@ -92,4 +92,32 @@ public class OrderItemController {
         }
         return response;
     }
+
+    @DeleteMapping("/api/orderitem/{id}")
+    public ResponseEntity<?> delete(@PathVariable final Integer id){
+        HttpHeaders headers = new HttpHeaders();
+        ResponseEntity<?> response;
+        try {
+            orderItemService.delete(id);
+            response = ResponseEntity.ok(null);
+        }
+        catch ( Exception ex) {
+            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+        }
+        return response;
+    }
+
+    @DeleteMapping("/api/orderitems")
+    public ResponseEntity<?> deleteAll(){
+        HttpHeaders headers = new HttpHeaders();
+        ResponseEntity<?> response;
+        try {
+            orderItemService.deleteAll();
+            response = ResponseEntity.ok(null);
+        }
+        catch ( Exception ex) {
+            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+        }
+        return response;
+    }
 }

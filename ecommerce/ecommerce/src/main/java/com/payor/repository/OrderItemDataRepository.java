@@ -8,4 +8,5 @@ import java.util.List;
 public interface OrderItemDataRepository extends CrudRepository<OrderItemData, Integer> {
    // Customer-related queries removed - no longer supported
    //List<OrderItemData> saveAll(List<OrderItemData> orderItemData);
+   java.util.Optional<OrderItemData> findByProductId(int productId);
 }

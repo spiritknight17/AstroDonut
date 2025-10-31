@@ -1,13 +1,16 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule, NgIf, NgFor, NgForOf, DecimalPipe } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { RouterModule } from '@angular/router';
+import { CartService } from '../service/cart.service';
 
 @Component({
   selector: 'app-cart',
-  imports: [NgIf, NgForOf, DecimalPipe, RouterModule],
+  standalone: true,
+  imports: [NgIf, NgForOf, DecimalPipe, RouterModule, CommonModule],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   animations: [
     trigger('cartAnimation', [
       transition(':enter', [
@@ -22,18 +25,29 @@ import { RouterModule } from '@angular/router';
 })
 export class Cart {
   @Input() showCart = false;
-  @Input() cartItems: any[] = [];
-  @Input() totalItems = 0;
+  @Input() totalItems: number = 0;
+  @Input()cartItems: any[] = []
   @Output() closeCart = new EventEmitter<void>();
+  constructor(private cartService: CartService) {}
+  ngOnInit() {
+    this.cartService.cartItems$.subscribe(items => {
+      this.cartItems = items;
+    });
+    this.cartService.refreshCart();
+  }
   closeCartPopup(event?: Event) {
-    if (event) {
-      event.stopPropagation();
-    }
+    if (event) event.stopPropagation();
     this.closeCart.emit();
   }
   getTotalPrice(): number {
-    return this.cartItems.reduce((total, item) => {
-      return total + item.price * item.quantity;
-    }, 0);
+    return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  }
+  removeItem(item: any) {
+    if (item && item.id != null) {
+      this.cartService.removeFromCart(item.id);
+    }
+  }
+  clearCart() {
+    this.cartService.clearCart();
   }
 }

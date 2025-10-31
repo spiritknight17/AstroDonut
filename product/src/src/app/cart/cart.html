@@ -3,23 +3,39 @@
         <div class="cartHeader">
             <button class="cartCloseButton" (click)="closeCartPopup()"><img src="assets/icons/XIcon/XBack.svg" alt="Close Cart"></button>
         </div>
+        <div *ngIf="cartItems.length > 0" class="cartTotal">
+                <h3>Total: ₱{{ getTotalPrice() | number: '1.2-2' }}</h3>
+        </div>
         <div class="cartItems">
             <h1 *ngIf="cartItems.length === 0">Your Cart is Empty, Please buy something!</h1>
             <img *ngIf="cartItems.length === 0" src="assets/icons/SadAstronautIcon/Sad Astronaut.svg" alt="Empty Cart" class="sadAstronaut">
-            <!-- Pending Modification -->
+            
             <div *ngFor="let item of cartItems" class="Items">
-                <span class="itemName">{{ item.name }}</span>
-                <span class="itemQuantity">x{{ item.quantity }}</span>
-                <span class="itemPrice">\${{ item.price * item.quantity | number:'1.2-2' }}</span>
-                <div class="cartTotal">Total: ${{ getTotalPrice() | number:'1.2-2' }}</div>
+                <div class="itemDetails">
+                    <div class="itemImageContainer">
+                        <img class="itemImage" [src]="'../assets/products/' + item.productImageFile + '.png'" [alt]="item.productName">
+                    </div>
+                    <div class="itemInfo">
+                        <span class="itemName">{{ item.productName }}</span>
+                        <span class="itemQuantity">Quantity: {{ item.quantity }}</span>
+                    </div>
+                </div>
+                <div class="itemPriceAndRemoveItemButton">
+                    <span class="itemPrice">₱{{ item.price * item.quantity | number: '1.2-2' }}</span>
+                    <button class="removeItemButton" >
+                        <img src="assets/icons/TrashIcon/Trash.svg" alt="Trash" class="Trash" (click)="removeItem(item)">
+                    </button>
+                </div>
             </div>
-            <!-- End Pending Modification -->
         </div>
         <div class="cartFooter">
-            <button *ngIf="cartItems.length === 0" class="continueShoppingButton" routerLink="/menu" (click)="closeCartPopup()">Continue Shopping</button>
+            <button class="continueShoppingButton" routerLink="/menu" (click)="closeCartPopup()" *ngIf="cartItems.length === 0">Continue Shopping</button>
             <!-- Pending Modification -->
-            <button *ngIf="cartItems.length > 0" class="checkoutButton">Checkout</button>
-            <!-- End Pending Modification -->
+            <div *ngIf="cartItems.length > 0" class="cartButtons">
+                <button class="clearCartButton" (click)="clearCart()">Clear Cart</button>
+                <button class="checkoutButton">Checkout</button>
+                <button class="continueShoppingButton" routerLink="/menu" (click)="closeCartPopup()">Continue Shopping</button>
+            </div>
         </div>
     </div>
 </div>

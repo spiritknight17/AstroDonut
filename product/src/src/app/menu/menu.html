@@ -20,7 +20,7 @@
                         <h2 class="menu-unit-of-measure">{{prod.unitOfMeasure}}</h2>
                     </div>
                     <div class="mp">
-                        <h2 class="menu-price">₱{{getTotalPrice(prod)}}</h2>
+                        <h2 class="menu-price">₱{{ prod.computedPrice || 0 }}</h2>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="buy-button">
-                    <button class="bb">Add to Cart</button>
+                    <button class="bb" (click)="addtoCart(prod)">Add to Cart</button>
                 </div>
             </div>
         </div>
