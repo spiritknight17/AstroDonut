@@ -1,0 +1,189 @@
+<div class="checkout">
+  <div class="checkout-content">
+    <div class="checkout-details">
+      <h1 class="Checkout-title">Checkout Details</h1>
+      <div class="checkout-details-details">
+        <div class="menu-personal-informations">
+        <h3 class="personal-information">Personal Information</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullname">Name: </label>
+            <input type="text" id="fullname" name="fullname" value="Input Fullname" (focus)="clearInputOnFocus($event)">
+          </div>
+          <div class="form-group">
+            <label for="emailaddress">Email Address: </label>
+            <input type="text" id="emailaddress" name="emailaddress" value="Input Email Address" (focus)="clearInputOnFocus($event)">
+          </div>
+          <div class="form-group">
+            <label for="phonenumber">Phone Number: </label>
+            <input type="text" id="phonenumber" name="phonenumber" value="Input Phone Number" (focus)="clearInputOnFocus($event)">
+          </div>
+        </div>
+      </div>
+      <div class="menu-shipping-address">
+        <h3 class="shipping-address">Shipping Address</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="streetaddress">Street Address: </label>
+            <input type="text" id="streetaddress" name="streetaddress" value="Input Street Address" (focus)="clearInputOnFocus($event)">
+          </div>
+          <div class="form-group">
+            <label for="city-municipality">City/Municipality: </label>
+            <input type="text" id="city-municipality" name="city-municipality" value="Input City/Municipality" (focus)="clearInputOnFocus($event)">
+          </div>
+          <div class="form-group">
+            <label for="province-region">Province/Region: </label>
+            <input type="text" id="province-region" name="province-region" value="Input Province/Region" (focus)="clearInputOnFocus($event)"> 
+          </div>
+          <div class="form-group">
+            <label for="zip-postal-code">ZIP/Postal Code: </label>
+            <input type="text" id="zip-postal-code" name="zip-postal-code" value="Input ZIP/Postal Code" (focus)="clearInputOnFocus($event)">
+          </div>
+          <div class="form-group">
+            <label for="country">Country: </label>
+            <input type="text" id="country" name="country" value="Input Country" (focus)="clearInputOnFocus($event)">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="delivery-instructions-or-landmark">Delivery Instructions or Landmark: </label>
+            <textarea name="message" rows="2" cols="95" (focus)="clearInputOnFocus($event)">Input Delivery Instructions or Landmark</textarea>
+          </div>
+        </div>
+      </div>
+      <div class="menu-payment-method">
+        <h3 class="payment-method">Payment Method</h3>
+        <div class="payment-rows">
+          <div class="payment-row visa-mastercard-row">
+            <button class="payment-button Visa" [class.selected]="selectedPayment === 'Visa'" (click)="selectPayment('Visa')"><img src="assets/icons/PaymentIcons/Visa.svg" class="VisaIcon" alt="VisaIcon"></button>
+            <button class="payment-button Mastercard" [class.selected]="selectedPayment === 'Mastercard'" (click)="selectPayment('Mastercard')"><img src="assets/icons/PaymentIcons/Mastercard.svg" class="MastercardIcon" alt="MastercardIcon"></button>
+          </div>
+          <div class="payment-row paypal-gcash-row">
+            <button class="payment-button Paypal" [class.selected]="selectedPayment === 'Paypal'" (click)="selectPayment('Paypal')"><img src="assets/icons/PaymentIcons/Paypal.svg" class="PaypalIcon" alt="PaypalIcon"></button>
+            <button class="payment-button GCash" [class.selected]="selectedPayment === 'GCash'" (click)="selectPayment('GCash')"><img src="assets/icons/PaymentIcons/GCash.svg" class="GCashIcon" alt="GCashIcon"></button>
+          </div>
+          <div class="payment-row maya-cod-row">
+            <button class="payment-button Maya" [class.selected]="selectedPayment === 'Maya'" (click)="selectPayment('Maya')"><img src="assets/icons/PaymentIcons/Maya.svg" class="MayaIcon" alt="MayaIcon"></button>
+            <button class="payment-button Cash-on-delivery" [class.selected]="selectedPayment === 'Cash-on-delivery'" (click)="selectPayment('Cash-on-delivery')"><img src="assets/icons/PaymentIcons/CashOnDelivery.svg" class="Cash-on-deliveryIcon" alt="Cash-on-deliveryIcon"></button>
+          </div>
+        </div>
+        <div class="payment-debug-message" *ngIf="selectedPayment">
+          <p>{{ paymentdebugMessage }}</p>
+        </div>
+        
+        <div class="payment-card" *ngIf="isCardPayment()">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cardnumber">Card Number: </label>
+              <input type="text" id="cardnumber" name="cardnumber" value="Input Card Number" (focus)="clearInputOnFocus($event)">
+            </div>
+            <div class="form-group">
+              <label for="expiration-date">Expiration Date: </label>
+              <input type="text" id="expiration-date" name="expiration-date" value="Input Expiration Date" (focus)="clearInputOnFocus($event)">
+            </div>
+            <div class="form-group">
+              <label for="cvv">CVV: </label>
+              <input type="text" id="cvv" name="cvv" value="Input CVV" (focus)="clearInputOnFocus($event)"> 
+            </div>
+          </div>
+        </div>
+        <div class="payment-e-wallet" *ngIf="isEWalletPayment()">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="accountnumber">Account Number: </label>
+              <input type="text" id="accountnumber" name="accountnumber" value="Input Account Number" (focus)="clearInputOnFocus($event)">
+            </div>
+            <div class="form-group">
+              <label for="accountname">Account Name: </label>
+              <input type="text" id="accountname" name="accountname" value="Input Account Name" (focus)="clearInputOnFocus($event)">
+            </div>
+          </div>          
+        </div>
+        
+        <div class="payment-cash-on-delivery" *ngIf="isCashOnDelivery()">
+          <div class="form-row">
+            <div class="form-group">
+              <p>Cash will be collected upon delivery of your order.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="delivery-options">
+        <h3>Delivery Options</h3>
+        <div class="delivery-options-button">
+          <button class="Delivery" [class.selected]="selectedDeliveryOption === 'Delivery'" (click)="selectDeliveryOption('Delivery')" class="Delivery" alt="Delivery">Delivery</button>
+        <button class="Pickup" [class.selected]="selectedDeliveryOption === 'Pickup'" (click)="selectDeliveryOption('Pickup')" class="Pickup" alt="Pickup">Pickup</button>
+        </div>
+      </div>
+      <div class="delivery-debug-message" *ngIf="selectedDeliveryOption">
+          <p>{{ deliverydebugMessage }}</p>
+      </div>
+      <div class="Delivery" *ngIf="isDelivery()">
+        <div class="form-row">
+          <div class="form-group">
+            <p class="textmessage1">Select when you want your order delivered</p>
+          </div>
+          <div class="form-group">
+            <p class="textmessage2">Note: You can't select 2 days after you order and time outside store openings (7:00 AM - 10:00 PM)</p>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="Delivery-Date">Delivery Date: </label>
+            <input type="date" id="Delivery-Date" name="Delivery-Date" [min]="minDate" (change)="validateDate($event, 'delivery')">
+            <div class="validation-message" *ngIf="dateValidationMessage">
+              <p class="error-message">{{ dateValidationMessage }}</p>
+            </div>
+            <div class="delivery-time" *ngIf="isDelivery()">
+              <label for="Delivery-Time">Delivery Time (7:00 AM - 10:00 PM): </label>
+              <input type="time" id="Delivery-Time" name="Delivery-Time" min="07:00" max="22:00" (change)="validateTime($event)">
+              <div class="validation-message" *ngIf="timeValidationMessage">
+                <p class="error-message">{{ timeValidationMessage }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Pickup" *ngIf="isPickup()">
+        <div class="form-row">
+          <div class="form-group">
+            <p class="textmessage1">Select when you are going to pickup your order</p>
+          </div>
+          <div class="form-group">
+            <p class="textmessage2">Note: You can't select 2 days after you order and time outside store openings (7:00 AM - 10:00 PM)</p>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="Pickup-Date">Pickup Date: </label>
+            <input type="date" id="Pickup-Date" name="Pickup-Date" [min]="minDate" (change)="validateDate($event, 'delivery')">
+            <div class="validation-message" *ngIf="dateValidationMessage">
+              <p class="error-message">{{ dateValidationMessage }}</p>
+            </div>
+            <label for="Pickup-Time">Pickup Time (7:00 AM - 10:00 PM): </label>
+            <input type="time" id="Pickup-Time" name="Pickup-Time" min="07:00" max="22:00" (change)="validateTime($event)">
+            <div class="validation-message" *ngIf="timeValidationMessage">
+              <p class="error-message">{{ timeValidationMessage }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="review-and-confirm">
+        <div class="review">
+          <input type="checkbox" id="Terms-and-conditions-and-refund-policy" name="Terms-and-conditions-and-refund-policy" value="Terms-and-conditions-and-refund-policy">
+          <label for="Terms-and-conditions-and-refund-policy"><a href="javascript:void(0)" (click)="toggleTermsPopup()">I have read the Terms & Conditions/Refund Policy</a></label>
+        </div>
+        <div class="confirm">
+          <button class="finalizeOrder">Finalize Order</button>
+        </div>
+      </div>
+      <app-terms [showTerms]="showTerms" (closeTerms)="closeTermsPopup()" (termsAccepted)="termsAccepted()"></app-terms>
+      </div>
+    </div>
+  </div>
+  <div class="order-summary">
+    <div class="order-details">
+
+    </div>
+  </div>
+</div>

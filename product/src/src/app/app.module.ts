@@ -14,6 +14,8 @@ import { Cart } from './cart/cart';
 import { Privacypolicy } from './privacypolicy/privacypolicy';
 import { Termsofservice } from './termsofservice/termsofservice';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Checkout } from './checkout/checkout';
+import { TermsAndConditionsAndRefundPolicy } from './terms-and-conditions-and-refund-policy/terms-and-conditions-and-refund-policy';
 
 @NgModule({
   declarations: [],
@@ -31,6 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Cart,
     Privacypolicy,
     Termsofservice,
+    Checkout,
+    TermsAndConditionsAndRefundPolicy,
     RouterOutlet
   ],
   providers: [],

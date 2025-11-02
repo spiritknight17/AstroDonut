@@ -5,13 +5,15 @@ import { Menu } from './menu/menu';
 import { AboutUs } from './about-us/about-us';
 import { Privacypolicy } from './privacypolicy/privacypolicy';
 import { Termsofservice } from './termsofservice/termsofservice';
+import { Checkout } from './checkout/checkout';
 
 export const routes: Routes = [
   {path:'',component:HomePage},
   {path:'menu',component:Menu},
   {path:'about',component:AboutUs},
   {path:'privacy-policy',component:Privacypolicy},
-  {path:'terms-of-service',component:Termsofservice}
+  {path:'terms-of-service',component:Termsofservice},
+  {path:'checkout',component:Checkout}
 ];
 
 @NgModule({

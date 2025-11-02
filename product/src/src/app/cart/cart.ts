@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule, NgIf, NgFor, NgForOf, DecimalPipe } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { CartService } from '../service/cart.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class Cart {
   @Input() totalItems: number = 0;
   @Input()cartItems: any[] = []
   @Output() closeCart = new EventEmitter<void>();
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
   ngOnInit() {
     this.cartService.cartItems$.subscribe(items => {
       this.cartItems = items;
@@ -49,5 +49,9 @@ export class Cart {
   }
   clearCart() {
     this.cartService.clearCart();
+  }
+  goToCheckout(){
+    this.closeCart.emit();
+    this.router.navigate(['/checkout']);
   }
 }

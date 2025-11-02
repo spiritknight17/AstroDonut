@@ -1,0 +1,711 @@
+@import url('https://fonts.cdnfonts.com/css/borsok');
+.checkout{
+  width: 100%;
+  height: 100vh;
+  background-color: #f7b9a1;
+  position: relative;
+  margin: 0 auto;
+  color: #333;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.checkout-content {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.checkout-details {
+  background: #f6f6e9;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 1475px;
+  max-height: 80vh;
+  margin: 10px;
+  padding: 0;
+  position: relative;
+  
+}
+.checkout-details-details {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.checkout-details-details::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.checkout-details-details::-webkit-scrollbar-track {
+  background: #f6f6e9;
+  border-radius: 10px;
+}
+
+.checkout-details-details::-webkit-scrollbar-thumb {
+  background: #f7b9a1;
+  border-radius: 10px;
+  border: 2px solid #f6f6e9;
+}
+
+.checkout-details-details::-webkit-scrollbar-thumb:hover {
+  background: #e89c84;
+}
+.order-summary {
+  background-color: #333;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  align-items: center;
+}
+.order-details {
+  background: #f6f6e9;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 1475px;
+  margin: 10px;
+}
+.VisaIcon, .MastercardIcon, .PaypalIcon, .GCashIcon, .MayaIcon, .Cash-on-deliveryIcon {
+   width: 10%;
+   height: 10%;
+   transition: filter 0.1s ease;
+}
+
+.payment-button:hover .VisaIcon,
+.payment-button:hover .MastercardIcon,
+.payment-button:hover .PaypalIcon,
+.payment-button:hover .GCashIcon,
+.payment-button:hover .MayaIcon,
+.payment-button:hover .Cash-on-deliveryIcon {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(6026%) hue-rotate(62deg) brightness(131%) contrast(91%);
+}
+.payment-button:hover .VisaIcon,
+.payment-button:hover .MastercardIcon,
+.payment-button:hover .PaypalIcon,
+.payment-button:hover .GCashIcon,
+.payment-button:hover .MayaIcon,
+.payment-button:hover .Cash-on-deliveryIcon {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(6026%) hue-rotate(62deg) brightness(131%) contrast(91%);
+}
+.payment-button.selected .VisaIcon,
+.payment-button.selected .MastercardIcon,
+.payment-button.selected .PaypalIcon,
+.payment-button.selected .GCashIcon,
+.payment-button.selected .MayaIcon,
+.payment-button.selected .Cash-on-deliveryIcon {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(6026%) hue-rotate(62deg) brightness(131%) contrast(91%);
+}
+
+.menu-payment-method {
+  flex-direction: column;
+  padding: 15px;
+}
+.menu-payment-method h3 {
+  padding: 10px;
+  font-family: 'Borsok';
+  font-size: 16px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+
+.payment-rows {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.payment-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.payment-rows button {
+  cursor: pointer;
+  border: solid 2px #f7b9a1;
+  align-items: center;
+  display: flex;
+  border-radius: 100px;
+  background: transparent;
+  color: #f7b9a1;
+  position: relative;
+}
+.payment-rows button:hover {
+  background-color: #f7b9a1;
+  transition: 0.3s; 
+}
+
+.visa-mastercard-row {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.paypal-gcash-row { 
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.maya-cod-row {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.payment-button {
+  width: 48%;
+  height: 60px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  background-color: #f6f6e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-rows button.selected {
+  background-color: #f7b9a1;
+  border: 2px solid #61a6ab;
+}
+
+.debug-message {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f6f6e9;
+  border-radius: 5px;
+  border-left: 4px solid #f7b9a1;
+}
+
+.validation-message {
+  margin: 5px 0;
+  padding: 5px 10px;
+  background-color: #fff0f0;
+  border-radius: 5px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 14px;
+  margin: 0;
+}
+.Checkout-title {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  font-family: 'Borsok';
+  font-size: 24px;
+  color: #f7b9a1;
+  position: relative;
+  height: auto;
+  text-align: center;
+  letter-spacing: 2px;
+  border-bottom: 1px solid #f7b9a1;
+  margin: 0 40px 10px;
+  z-index: 10;
+  position: sticky;
+}
+.menu-personal-informations {
+  padding: 10px;
+}
+.menu-personal-informations h3 {
+  padding: 10px;
+  font-family: 'Borsok';
+  font-size: 16px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+.menu-personal-informations label {
+  padding: 10px;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: gray;
+  position: relative;
+  letter-spacing: 2px;
+}
+
+input[type="text"], 
+input[type="date"], 
+input[type="time"],
+textarea {
+  background-color: #f6f6e9;
+  border: 2px solid #f7b9a1;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin: 5px;
+  font-family: 'Montserrat';
+  font-size: 12px;
+  color: gray;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  width: 200px;
+}
+
+input[type="text"]:focus, 
+input[type="date"]:focus, 
+input[type="time"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #61a6ab;
+  box-shadow: 0 2px 8px rgba(97, 166, 171, 0.2);
+}
+.checkout{
+  width: 100%;
+  height: 100vh;
+  background-color: #f7b9a1;
+  position: relative;
+  margin: 0 auto;
+  color: #333;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.checkout-content {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.checkout-details {
+  background: #f6f6e9;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 1475px;
+  max-height: 80vh;
+  margin: 10px;
+  overflow-y: auto;
+}
+.order-summary {
+  background-color: #333;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  align-items: center;
+}
+.order-details {
+  background: #f6f6e9;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 1475px;
+  margin: 10px;
+}
+.VisaIcon {
+  width: 75px;
+  height: 75px;
+}
+.MastercardIcon {
+  width: 50px;
+  height: 50px;
+}
+.PaypalIcon {
+  width: 40px;
+  height: 40px;
+}
+.GCashIcon {
+  width: 50px;
+  height: 50px;
+}
+.MayaIcon {
+  width: 50px;
+  height: 50px;
+}
+.Cash-on-deliveryIcon {
+  width: 50px;
+  height: 50px;
+}
+.menu-payment-method {
+  flex-direction: column;
+}
+.menu-payment-method-buttons button {
+  width: 50%;
+  height: 50%;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  background-color: #f6f6e9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.menu-payment-method-buttons button.selected {
+  border-color: #f7b9a1;
+  background-color: #fde8e0;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.debug-message {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f6f6e9;
+  border-radius: 5px;
+  border-left: 4px solid #f7b9a1;
+}
+
+.validation-message {
+  margin: 5px 0;
+  padding: 5px 10px;
+  background-color: #f6f6e9;
+  border-radius: 5px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 14px;
+  margin: 0;
+}
+.Checkout-title {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  font-family: 'Borsok';
+  font-size: 24px;
+  color: #f7b9a1;
+  position: relative;
+  height: auto;
+  text-align: center;
+  letter-spacing: 2px;
+  border-bottom: 1px solid #f7b9a1;
+  margin: 0 40px 10px;
+}
+.menu-personal-informations {
+  padding: 10px;
+}
+.menu-personal-informations h3 {
+  padding: 10px;
+  font-family: 'Borsok';
+  font-size: 16px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+.menu-personal-informations label {
+  padding: 10px;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #f7b9a1;
+  position: relative;
+  letter-spacing: 2px;
+}
+input[type="text"], 
+input[type="date"], 
+input[type="time"],
+textarea {
+  background-color: #f6f6e9;
+  border: 2px solid #f7b9a1;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+  font-family: 'Montserrat';
+  font-size: 12px;
+  color: gray;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  width: auto;
+  height: auto;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  color: #f7b9a1;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+}
+
+input[type="text"]:focus, 
+input[type="date"]:focus, 
+input[type="time"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #61a6ab;
+  box-shadow: 0 2px 8px rgba(97, 166, 171, 0.2);
+}
+.menu-shipping-address {
+  padding: 10px;
+}
+.menu-shipping-address h3 {
+  padding: 10px;
+  font-family: 'Borsok';
+  font-size: 16px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+.menu-shipping-address label {
+  padding: 10px;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #f7b9a1;
+  position: relative;
+  letter-spacing: 2px;
+}
+.visaandmastercard {
+  padding: 10px;
+  flex-direction: row;
+}
+.paypalandgcash {
+  padding: 10px;
+  flex-direction: row;
+}
+.mayaandcashondelivery {
+  padding: 10px;
+  flex-direction: row;
+}
+.payment-debug-message {
+  width: 100%;
+  padding: 10px;
+  font-family: 'Borsok';
+  font-size: 12px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+.payment-card {
+  display: flex;
+  padding: 10px;
+}
+.payment-card label {
+  padding: 10px;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #f7b9a1;
+  position: relative;
+  letter-spacing: 2px;
+}
+.payment-e-wallet {
+  display: flex;
+  padding: 10px;
+}
+.payment-e-wallet label {
+  padding: 10px;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #f7b9a1;
+  position: relative;
+  letter-spacing: 2px;
+}
+.payment-cash-on-delivery  {
+  display: flex;
+  padding: 10px;
+}
+.payment-cash-on-delivery p {
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #f7b9a1;
+  position: relative;
+  letter-spacing: 2px;
+}
+.delivery-options {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+}
+.delivery-options h3 {
+  padding: 10px;
+  font-family: 'Borsok';
+  font-size: 16px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+.delivery-options-button {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.delivery-options-button button {
+  cursor: pointer;
+  border: solid 2px #f7b9a1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 100px;
+  background: transparent;
+  color: #f7b9a1;
+  font-size: 16px;
+  letter-spacing: 2px;
+  position: relative;
+  width: 50%;
+  height: 50px;
+  font-family: 'Borsok';
+}
+.delivery-options-button button:hover {
+  background-color: #f7b9a1;
+  transition: 0.3s;
+  color: #f6f6e9;
+}
+.delivery-options-button button.selected {
+  background-color: #f7b9a1;
+  border: 2px solid #61a6ab;
+  color: #f6f6e9;
+}
+.delivery-debug-message p {
+  width: 100%;
+  padding: 20px;
+  font-family: 'Borsok';
+  font-size: 12px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+.textmessage1 {
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #f7b9a1;
+  position: relative;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.textmessage2 {
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #f7b9a1;
+  position: relative;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.review-and-confirm {
+  width: 100%;
+  padding: 10px;
+}
+.review {
+  width: 100%;
+  padding: 10px;
+}
+.review label{ 
+   font-family: 'Montserrat'; 
+   padding: 10px; 
+   color: #61a6ab; 
+ } 
+
+.review label a {
+   color: #61a6ab;
+   text-decoration: underline;
+   font-weight: bold;
+   transition: color 0.3s ease;
+}
+
+.review input[type="checkbox"] {
+   width: 20px;
+   height: 20px;
+   border: 2px solid #61a6ab;
+   border-radius: 4px;
+   appearance: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   outline: none;
+   cursor: pointer;
+   vertical-align: middle;
+   transition: all 0.3s ease;
+}
+
+.review input[type="checkbox"]:checked {
+   background-color: #61a6ab;
+   border-color: #61a6ab;
+   position: relative;
+}
+
+.review input[type="checkbox"]:checked::after {
+   content: '✓';
+   position: absolute;
+   color: white;
+   font-size: 14px;
+   top: 0;
+   left: 4px;
+}
+.confirm {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+}
+.finalizeOrder {
+  border: solid 2px #f7b9a1;
+  text-align: center;
+  display: inline-block;
+  font-size: 32px;
+  font-family: 'Borsok';
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 100px;
+  background: transparent;
+  width: 500px;
+  height: 70px;
+  color: #f7b9a1;
+  letter-spacing: 2px;
+  position: relative;
+}
+.finalizeOrder:hover {
+    background-color: #f7b9a1;
+    color: #f6f6e9;
+    transition: 0.3s;  
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, NavigationEnd, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 
@@ -16,4 +16,14 @@ import { Header } from './header/header';
 })
 export class AppComponent {
   title = 'AstroDonut'
+  showLayout = true;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const url = event.urlAfterRedirects || event.url;
+        this.showLayout = !url.startsWith('/checkout');
+      }
+    });
+  }
 }

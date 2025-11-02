@@ -33,7 +33,7 @@
             <!-- Pending Modification -->
             <div *ngIf="cartItems.length > 0" class="cartButtons">
                 <button class="clearCartButton" (click)="clearCart()">Clear Cart</button>
-                <button class="checkoutButton">Checkout</button>
+                <button class="checkoutButton" (click)="goToCheckout()">Checkout</button>
                 <button class="continueShoppingButton" routerLink="/menu" (click)="closeCartPopup()">Continue Shopping</button>
             </div>
         </div>
