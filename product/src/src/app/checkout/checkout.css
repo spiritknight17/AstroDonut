@@ -476,6 +476,22 @@ textarea {
 
 .form-group input {
   width: 100%;
+  background-color: #f6f6e9;
+  border: 2px solid #f7b9a1;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+  font-family: 'Montserrat';
+  font-size: 12px;
+  color: gray;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  width: auto;
+  height: auto;
+}
+.form-group input.selected {
+  background-color: #f7b9a1;
+  border: 2px solid #61a6ab;
 }
 
 input[type="text"]:focus, 
@@ -708,4 +724,172 @@ textarea:focus {
     background-color: #f7b9a1;
     color: #f6f6e9;
     transition: 0.3s;  
+}
+.order-summary {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.order-details {
+  background: #f6f6e9;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 1475px;
+  max-height: 80vh;
+  margin: 10px;
+  padding: 0;
+  position: relative;
+}
+.order-title {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  font-family: 'Borsok';
+  font-size: 24px;
+  color: #f7b9a1;
+  position: relative;
+  height: auto;
+  text-align: center;
+  letter-spacing: 2px;
+  border-bottom: 1px solid #f7b9a1;
+  margin: 0 40px 10px;
+  z-index: 10;
+  position: sticky;
+}
+.order-details-details {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.order-details-details::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.order-details-details::-webkit-scrollbar-track {
+  background: #f6f6e9;
+  border-radius: 10px;
+}
+
+.order-details-details::-webkit-scrollbar-thumb {
+  background: #f7b9a1;
+  border-radius: 10px;
+  border: 2px solid #f6f6e9;
+}
+
+.order-details-details::-webkit-scrollbar-thumb:hover {
+  background: #e89c84;
+}
+.order-list {
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+}
+.order-list-itemName {
+  width: 35%;
+  padding-left: 30px;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+.order-list-itemQuantity{
+  width: 35%;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+.order-list-itemPrice{
+  width: 30%;
+  text-align: right;
+  padding-right: 30px;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+.shipping-cost-and-taxes {
+  padding: 10px; 
+}
+.shipping-cost-and-taxes p {
+  padding-left: 30px;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.shipping-cost {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+.taxes {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #61a6ab;
+  position: relative;
+  letter-spacing: 2px;
+}
+.order-summary-total{
+  padding: 10px;
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+}
+.order-total {
+  width: 50%;
+  padding-left: 30px;
+  font-family: 'Borsok';
+  font-size: 16px;
+  color: #f7b9a1;
+  position: relative;
+  letter-spacing: 2px;
+}
+.order-total-price {
+  width: 50%;
+  padding-right: 30px;
+  font-family: 'Borsok';
+  font-size: 16px;
+  color: #f7b9a1;
+  position: relative;
+  letter-spacing: 2px;
+  text-align: right;
+}
+.cost-value {
+  text-align: right;
+  padding-left: 492px;
+}
+.cost-value-ship {
+  padding-left: 438px;
+  text-align: right;
 }

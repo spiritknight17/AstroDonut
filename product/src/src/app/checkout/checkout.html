@@ -7,16 +7,25 @@
         <h3 class="personal-information">Personal Information</h3>
         <div class="form-row">
           <div class="form-group">
-            <label for="fullname">Name: </label>
-            <input type="text" id="fullname" name="fullname" value="Input Fullname" (focus)="clearInputOnFocus($event)">
+            <label for="fullname">Name: <span class="required">*</span></label>
+            <input type="text" id="fullname" name="fullname" value="Input Fullname" (focus)="clearInputOnFocus($event)" [(ngModel)]="formData.fullname" required>
+            <div class="validation-message" *ngIf="formErrors.fullname">
+              <p class="error-message">{{ formErrors.fullname }}</p>
+            </div>
           </div>
           <div class="form-group">
-            <label for="emailaddress">Email Address: </label>
-            <input type="text" id="emailaddress" name="emailaddress" value="Input Email Address" (focus)="clearInputOnFocus($event)">
+            <label for="emailaddress">Email Address: <span class="required">*</span></label>
+            <input class="ea" type="email" id="emailaddress" name="emailaddress" value="Input Email Address" (focus)="clearInputOnFocus($event)" [(ngModel)]="formData.emailaddress" required>
+            <div class="validation-message" *ngIf="formErrors.emailaddress">
+              <p class="error-message">{{ formErrors.emailaddress }}</p>
+            </div>
           </div>
           <div class="form-group">
-            <label for="phonenumber">Phone Number: </label>
-            <input type="text" id="phonenumber" name="phonenumber" value="Input Phone Number" (focus)="clearInputOnFocus($event)">
+            <label for="phonenumber">Phone Number: <span class="required">*</span></label>
+            <input type="text" id="phonenumber" name="phonenumber" value="Input Phone Number" (focus)="clearInputOnFocus($event)" [(ngModel)]="formData.phonenumber" required>
+            <div class="validation-message" *ngIf="formErrors.phonenumber">
+              <p class="error-message">{{ formErrors.phonenumber }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -24,24 +33,39 @@
         <h3 class="shipping-address">Shipping Address</h3>
         <div class="form-row">
           <div class="form-group">
-            <label for="streetaddress">Street Address: </label>
-            <input type="text" id="streetaddress" name="streetaddress" value="Input Street Address" (focus)="clearInputOnFocus($event)">
+            <label for="streetaddress">Street Address: <span class="required">*</span></label>
+            <input type="text" id="streetaddress" name="streetaddress" value="Input Street Address" (focus)="clearInputOnFocus($event)" [(ngModel)]="formData.streetaddress" required>
+            <div class="validation-message" *ngIf="formErrors.streetaddress">
+              <p class="error-message">{{ formErrors.streetaddress }}</p>
+            </div>
           </div>
           <div class="form-group">
-            <label for="city-municipality">City/Municipality: </label>
-            <input type="text" id="city-municipality" name="city-municipality" value="Input City/Municipality" (focus)="clearInputOnFocus($event)">
+            <label for="city-municipality">City/Municipality: <span class="required">*</span></label>
+            <input type="text" id="city-municipality" name="city-municipality" value="Input City/Municipality" (focus)="clearInputOnFocus($event)" [(ngModel)]="formData.city" required>
+            <div class="validation-message" *ngIf="formErrors.city">
+              <p class="error-message">{{ formErrors.city }}</p>
+            </div>
           </div>
           <div class="form-group">
-            <label for="province-region">Province/Region: </label>
-            <input type="text" id="province-region" name="province-region" value="Input Province/Region" (focus)="clearInputOnFocus($event)"> 
+            <label for="province-region">Province/Region: <span class="required">*</span></label>
+            <input type="text" id="province-region" name="province-region" value="Input Province/Region" (focus)="clearInputOnFocus($event)" [(ngModel)]="formData.province" required> 
+            <div class="validation-message" *ngIf="formErrors.province">
+              <p class="error-message">{{ formErrors.province }}</p>
+            </div>
           </div>
           <div class="form-group">
-            <label for="zip-postal-code">ZIP/Postal Code: </label>
-            <input type="text" id="zip-postal-code" name="zip-postal-code" value="Input ZIP/Postal Code" (focus)="clearInputOnFocus($event)">
+            <label for="zip-postal-code">ZIP/Postal Code: <span class="required">*</span></label>
+            <input type="text" id="zip-postal-code" name="zip-postal-code" value="Input ZIP/Postal Code" (focus)="clearInputOnFocus($event)" [(ngModel)]="formData.zipcode" required>
+            <div class="validation-message" *ngIf="formErrors.zipcode">
+              <p class="error-message">{{ formErrors.zipcode }}</p>
+            </div>
           </div>
           <div class="form-group">
-            <label for="country">Country: </label>
-            <input type="text" id="country" name="country" value="Input Country" (focus)="clearInputOnFocus($event)">
+            <label for="country">Country: <span class="required">*</span></label>
+            <input type="text" id="country" name="country" value="Input Country" (focus)="clearInputOnFocus($event)" [(ngModel)]="formData.country" required>
+            <div class="validation-message" *ngIf="formErrors.country">
+              <p class="error-message">{{ formErrors.country }}</p>
+            </div>
           </div>
         </div>
         <div class="form-row">
@@ -170,11 +194,14 @@
       </div>
       <div class="review-and-confirm">
         <div class="review">
-          <input type="checkbox" id="Terms-and-conditions-and-refund-policy" name="Terms-and-conditions-and-refund-policy" value="Terms-and-conditions-and-refund-policy">
-          <label for="Terms-and-conditions-and-refund-policy"><a href="javascript:void(0)" (click)="toggleTermsPopup()">I have read the Terms & Conditions/Refund Policy</a></label>
+          <input type="checkbox" id="Terms-and-conditions-and-refund-policy" name="Terms-and-conditions-and-refund-policy" value="Terms-and-conditions-and-refund-policy" [(ngModel)]="termsChecked" required>
+          <label for="Terms-and-conditions-and-refund-policy"><a href="javascript:void(0)" (click)="toggleTermsPopup()">I have read the Terms & Conditions/Refund Policy</a> <span class="required">*</span></label>
+          <div class="validation-message" *ngIf="formErrors.terms">
+            <p class="error-message">{{ formErrors.terms }}</p>
+          </div>
         </div>
         <div class="confirm">
-          <button class="finalizeOrder">Finalize Order</button>
+          <button class="finalizeOrder" (click)="finalizeOrder()">Finalize Order</button>
         </div>
       </div>
       <app-terms [showTerms]="showTerms" (closeTerms)="closeTermsPopup()" (termsAccepted)="termsAccepted()"></app-terms>
@@ -183,7 +210,42 @@
   </div>
   <div class="order-summary">
     <div class="order-details">
-
+      <h1 class="order-title">Order Summary</h1>
+      <div class="order-details-details">
+        <div *ngFor="let item of cartItems" class="order-list">
+          <div class="order-list-itemName">
+            <span class="orderitemName">{{ item.productName }}</span>
+          </div>
+          <div class="order-list-itemQuantity">
+            <span class="orderitemQuantity">Quantity: {{ item.quantity }}</span>
+          </div>
+          <div class="order-list-itemPrice">
+            <span class="orderitemPrice">₱{{ item.price * item.quantity | number: '1.2-2' }}</span>
+          </div>
+        </div>
+        <div class="shipping-cost-and-taxes">
+          <div class="shipping-cost">
+            <div class="shipping-cost-text">
+              <p>Shipping Cost: </p>
+            </div>
+            <div class="shipping-cost-computation">
+              <span class="cost-value-ship">₱{{ shippingCost | number: '1.2-2' }}</span>
+            </div>
+          </div>
+          <div class="taxes">
+            <div class="taxes-text">
+              <p>Taxes: </p>
+            </div>
+            <div class="taxes-computation">
+              <span class="cost-value">₱{{ taxAmount | number: '1.2-2' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="order-summary-total">
+          <h3 class="order-total">Total: </h3>
+          <h3 class="order-total-price">₱{{ getTotalWithShippingAndTax() | number: '1.2-2' }}</h3>
+        </div>
     </div>
   </div>
 </div>
