@@ -17,10 +17,21 @@ import { CartService } from '../service/cart.service';
 })
 export class Menu {
   public products: (Product & { quantity: number; computedPrice: number })[] = [];
+  public filteredProducts: (Product & { quantity: number; computedPrice: number })[] = [];
+  public searchQuery: string = '';
   constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute) {}
+  stars: number[] = [1, 2, 3, 4, 5];
   ngOnInit(): void {
     console.log("ngOnInit called");
-    this.productService.getData().subscribe((data: Product[]) => {this.products = data.map((p: Product) => ({...p, quantity: 0, computedPrice: 0 }));});
+    this.productService.getData().subscribe((data: Product[]) => {
+      this.products = data.map((p: Product) => ({...p, quantity: 0, computedPrice: 0 }));
+      this.filteredProducts = [...this.products];
+      
+      this.route.queryParams.subscribe(params => {
+        this.searchQuery = params['search'] || '';
+        this.filterProducts();
+      });
+    });
   }
   increaseQuantity(prod: any) {
     prod.quantity = (prod.quantity || 0) + 1;
@@ -34,6 +45,20 @@ export class Menu {
   }
   getTotalPrice(product: Product & { quantity: number }): number{
     return product.price * product.quantity;
+  }
+
+  filterProducts(): void {
+    if (this.searchQuery.trim()) {
+      this.filteredProducts = this.products.filter(product => 
+        product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+      
+      if (this.filteredProducts.length === 0) {
+        alert(`No products found matching "${this.searchQuery}". Please try a different search term.`);
+      }
+    } else {
+      this.filteredProducts = [...this.products];
+    }
   }
   addtoCart(prod: any) {
     if (prod.quantity <= 0) {

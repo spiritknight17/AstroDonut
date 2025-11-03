@@ -9,8 +9,8 @@
                 <p>Where every bite is an interstellar adventure.</p>
             </div>
             <div class="HomeSection1Buttons">
-                <button type="button" class="OrderButton">Order Now</button>
-                <button type="button" class="AboutUsButton">About Us</button>
+                <button type="button" class="OrderButton" (click)="goToMenu()">Order Now</button>
+                <button type="button" class="AboutUsButton" (click)="goToAboutUs()">About Us</button>
             </div>
         </div>
         <div class ="HomeSection2">
@@ -41,11 +41,9 @@
                             <div class="product-info">
                                 <h3 class="product-name">{{prod.name}}</h3>
                                 <div class="product-rating">
-                                    <ion-icon name="star-outline" class="star"></ion-icon>
-                                    <ion-icon name="star-outline" class="star"></ion-icon>
-                                    <ion-icon name="star-outline" class="star"></ion-icon>
-                                    <ion-icon name="star-outline" class="star"></ion-icon>
-                                    <ion-icon name="star-outline" class="star"></ion-icon>
+                                    <ng-container *ngFor="let star of stars; let i = index">
+                                        <ion-icon [name]="i < prod.ratings ? 'star' : 'star-outline'" class="star"></ion-icon>
+                                    </ng-container>
                                     <span class="rating-text">{{prod.ratings}}</span>
                                 </div>
                                 <div class="product-price">₱{{prod.price}}</div>

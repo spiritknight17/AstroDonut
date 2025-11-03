@@ -306,16 +306,30 @@
     justify-content: center;
     gap: 5px;
     margin-bottom: 15px;
+    z-index: 5;
+    position: relative;
+    transform: translateZ(0);
 }
 
 .star {
     font-size: 16px;
     color: #61a6ab;
     transition: color 0.2s ease;
+    z-index: 5;
+    position: relative;
+    will-change: transform;
 }
 
 .star:hover {
     color: #61a6ab;
+}
+.product-rating .star-html {
+    font-size: 16px; 
+    color: #61a6ab; 
+    line-height: 1;
+    font-family: Arial, sans-serif; 
+    position: relative; 
+    z-index: 5;
 }
 
 .rating-text {
@@ -324,6 +338,8 @@
     font-weight: 500;
     color: black;
     margin-left: 8px;
+    z-index: 5;
+    position: relative;
 }
 
 .product-price {
@@ -415,6 +431,28 @@
 }
 .Donut2.pan-hidden, .IcedCoffee1.pan-hidden {
     animation: panToRight 0.6s ease-in forwards;
+}
+.product-rating ion-icon {
+    visibility: visible !important; 
+    opacity: 1 !important;
+    display: block !important;
+}
+.product-rating ion-icon::before,
+.product-rating ion-icon svg {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+}
+ion-icon.star {
+    font-size: 16px !important; 
+    color: #61a6ab !important;
+    transition: color 0.2s ease;
+    z-index: 5;
+    position: relative;
+    will-change: transform;
+}
+ion-icon.star svg {
+    fill: #61a6ab !important; 
 }
 @keyframes rotate {
     from {

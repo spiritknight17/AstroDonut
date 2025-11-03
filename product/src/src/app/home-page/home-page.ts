@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { Swiper } from 'swiper';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Product } from '../model/product';
@@ -25,7 +25,8 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   private manualScrollTimeout: any;
   private autoScrollPosition = 0;
   public products: Product[] = [];
-  constructor(private productService: ProductService, private route: ActivatedRoute, private el: ElementRef) {}
+  constructor(private productService: ProductService, private route: ActivatedRoute, private el: ElementRef, private router: Router,) {}
+  stars: number[] = [1, 2, 3, 4, 5];
 
   ngOnInit(): void {
     console.log("ngOnInit called");
@@ -60,7 +61,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.initializeCarousel();
+    /*this.initializeCarousel();*/
   }
 
   private initializeSwiper(): void {
@@ -224,25 +225,102 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => carouselObserver.observe(card));
   }
+  private generateHtmlStars(rating: number): string {
+    const starFilled = '★';
+    const starOutline = '☆'; 
+    let html = '';
+    const starStyle = `
+        font-size: 16px; 
+        color: #61a6ab; 
+        position: relative; 
+        z-index: 5;
+    `;
 
+    for (let i = 1; i <= 5; i++) {
+        const starChar = i <= rating ? starFilled : starOutline;
+        html += `<span style="${starStyle}">${starChar}</span>`;
+    }
+    return html;
+  }
+  
   private initializeCarousel(): void {
     if (!this.products || this.products.length === 0) return;
-
     const carouselList = document.getElementById('carousel-list');
     if (!carouselList) return;
+    if (carouselList.hasAttribute('data-cloned')) return;
+    const slides = Array.from(carouselList.children);
+    slides.forEach((slide, originalIndex) => {
+        const clone = slide.cloneNode(true) as HTMLElement;
+        const productData = this.products[originalIndex];
+        setTimeout(() => {
+            const ratingContainer = clone.querySelector('.product-rating');
+            
+            if (ratingContainer && productData) {
+                const icons = ratingContainer.querySelectorAll('ion-icon');
+                icons.forEach(icon => icon.remove());
 
-    if (!carouselList.hasAttribute('data-cloned')) {
-      const slides = Array.from(carouselList.children);
-      slides.forEach((slide) => {
-        const clone = slide.cloneNode(true);
+                const ratingText = ratingContainer.querySelector('.rating-text');
+                if (ratingText) {
+                    const starsHtml = this.generateHtmlStars(productData.ratings);
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = starsHtml;
+                    
+                    Array.from(tempDiv.children).forEach(starSpan => {
+                        ratingContainer.insertBefore(starSpan, ratingText);
+                    });
+                }
+            }
+        }, 10);
+        
         carouselList.appendChild(clone);
-      });
-      carouselList.setAttribute('data-cloned', 'true');
-    }
+    });
 
+    carouselList.setAttribute('data-cloned', 'true');
     this.startAutoPlay();
   }
-
+  
+  goToMenu() {
+    const targetId = 'menu';
+    const currentUrl = this.router.url.split('#')[0];
+    if (currentUrl === '/menu') {
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+    } else {
+    this.router.navigate(['/menu']).then(() => {
+        setTimeout(() => {
+          const element = document.getElementById(targetId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 50);
+      });
+    }
+  }
+  goToAboutUs() {
+    const targetId = 'about-us';
+    const currentUrl = this.router.url.split('#')[0];
+    if (currentUrl === '/about') {
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+    } else {
+    this.router.navigate(['/about']).then(() => {
+        setTimeout(() => {
+          const element = document.getElementById(targetId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 50);
+      });
+    }
+  }
   private startAutoPlay(): void {
     const carouselList = document.getElementById('carousel-list');
     if (!carouselList) return;

@@ -83,7 +83,7 @@
     align-items: stretch;
 }
 .menu-name-and-description {
-    height: 75%;
+    height: 50%;
 }
 .menu-unit-of-measure-and-price {
     height: 25%;
@@ -225,4 +225,23 @@
 .menu-quantity-and-buy {
     background-color: #f6f6e9;
     
+}
+.menu-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 25%;
+}
+.star {
+    font-size: 40px;
+    color: #61a6ab;
+    transition: color 0.2s ease;
+}
+.menu-rating-text {
+    font-family: 'Borsok';
+    font-size: 40px;
+    font-weight: 500;
+    color: #61a6ab;
+    margin-left: 8px;
 }

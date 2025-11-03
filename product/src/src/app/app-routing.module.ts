@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { HomePage } from './home-page/home-page';
 import { Menu } from './menu/menu';
 import { AboutUs } from './about-us/about-us';
@@ -15,6 +15,10 @@ export const routes: Routes = [
   {path:'terms-of-service',component:Termsofservice},
   {path:'checkout',component:Checkout}
 ];
+const routerOptions: ExtraOptions = {
+  anchorScrolling: 'enabled',       
+  scrollOffset: [0, 0],     
+};
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
