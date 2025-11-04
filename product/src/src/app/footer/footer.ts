@@ -28,4 +28,88 @@ export class Footer {
       }
     });
   }
+  goToLocations() {
+    const targetId = 'about-location-h3';
+    const currentUrl = this.router.url.split('#')[0];
+    if (currentUrl === '/about') {
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+    } else {
+    this.router.navigate(['/about']).then(() => {
+        setTimeout(() => {
+          const element = document.getElementById(targetId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 50);
+      });
+    }
+  }
+  goToContacts() {
+    const targetId = 'about-contacts-h3';
+    const currentUrl = this.router.url.split('#')[0];
+    if (currentUrl === '/about') {
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+    } else {
+    this.router.navigate(['/about']).then(() => {
+        setTimeout(() => {
+          const element = document.getElementById(targetId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 50);
+      });
+    }
+  }
+  goToPrivacyPolicy() {
+    const targetId = 'privacy-policy';
+    const currentUrl = this.router.url.split('#')[0];
+    if (currentUrl === '/privacy-policy') {
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+    } else {
+    this.router.navigate(['/privacy-policy']).then(() => {
+        setTimeout(() => {
+          const element = document.getElementById(targetId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 50);
+      });
+    }
+  }
+  goToTermsandServices() {
+    const targetId = 'terms-of-service';
+    const currentUrl = this.router.url.split('#')[0];
+    if (currentUrl === '/terms-of-service') {
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+    } else {
+    this.router.navigate(['/terms-of-service']).then(() => {
+        setTimeout(() => {
+          const element = document.getElementById(targetId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 50);
+      });
+    }
+  }
 }

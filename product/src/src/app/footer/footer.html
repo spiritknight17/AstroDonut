@@ -23,12 +23,12 @@
             <a (click)="goToDeals()">Deals</a>
             <a routerLink="/about">About Us</a>
             <!-- Pending Modification -->
-            <a href="#">Locations</a>
+            <a (click)="goToLocations()">Locations</a>
             <!-- End Pending Modification -->
         </div>
         <!-- Pending Modification -->
         <div class="contactUs">
-            <button type="button">Contact Us</button>
+            <button type="button" (click)="goToContacts()">Contact Us</button>
         </div>
         <!-- End Pending Modification -->
     </div>
@@ -40,9 +40,9 @@
             <p>© 2025 AstroDonut. All rights reserved.</p>
         </div>
         <div class="PrivacyPolicyandTermsofService">
-            <a routerLink="/privacy-policy">Privacy Policy</a>
+            <a (click)="goToPrivacyPolicy()">Privacy Policy</a>
             <p>|</p>
-            <a routerLink="/terms-of-service">Terms of Service</a>
+            <a (click)="goToTermsandServices()">Terms of Service</a>
         </div>
     </div>
 </div>

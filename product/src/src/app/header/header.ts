@@ -64,6 +64,27 @@ export class Header {
       });
     }
   }
+  goToLocations() {
+    const targetId = 'about-location-h3';
+    const currentUrl = this.router.url.split('#')[0];
+    if (currentUrl === '/about') {
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+    } else {
+    this.router.navigate(['/about']).then(() => {
+        setTimeout(() => {
+          const element = document.getElementById(targetId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 50);
+      });
+    }
+  }
 
   performSearch() {
     if (this.searchQuery.trim()) {

@@ -1,0 +1,35 @@
+.terms-of-service{
+    width: 100%;
+    height: auto;
+    padding-top: 137.5px;
+}
+.terms-of-service-h3{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 10px;
+    font-family: 'Borsok';
+    font-size: 60px;
+    color: #f7b9a1;
+    position: relative;
+    height: auto;
+    text-align: center;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #f7b9a1;
+    margin: 0 40px 10px;
+    z-index: 10;
+    position: sticky;
+}
+.terms-of-service-p {
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+    padding: 10px;
+    line-height: 35px;
+    text-align: justify;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    color: gray;
+    position: relative;
+    letter-spacing: 2px;
+}

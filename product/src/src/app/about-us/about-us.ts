@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-about-us',
@@ -8,5 +8,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './about-us.css'
 })
 export class AboutUs {
-
+  constructor(private router: Router) {}
 }
